@@ -1,4 +1,5 @@
 import AppBarChart from "@/components/charts/AppBarChart";
+import {AppAreaChat} from "@/components/charts/AppAreaChart";
 
 const Homepage = () => {
   return (
@@ -14,7 +15,7 @@ const Homepage = () => {
         </div>
         <div className="bg-primary-foreground p-4 rounded-lg">text</div>
         <div className="bg-primary-foreground p-4 rounded-lg lg:col-span-2 xl:col-span-1 2xl:col-span-2">
-         text
+         <AppAreaChat/>
         </div>
         <div className="bg-primary-foreground p-4 rounded-lg">
           text
