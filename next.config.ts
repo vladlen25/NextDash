@@ -2,7 +2,16 @@ import type {NextConfig} from "next";
 
 const nextConfig: NextConfig = {
     images: {
-        remotePatterns: [new URL('https://github.com/shadcn.png')],
+        remotePatterns: [
+            {
+                protocol: "https",
+                hostname: "images.pexels.com",
+            },
+            {
+                protocol: "https",
+                hostname: "github.com",
+            },
+        ],
     },
 };
 

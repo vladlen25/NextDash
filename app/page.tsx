@@ -1,6 +1,7 @@
 import AppBarChart from "@/components/charts/AppBarChart";
 import {AppAreaChat} from "@/components/charts/AppAreaChart";
 import {AppPieChart} from "@/components/charts/AppPieChart";
+import TransactionCard from "@/components/cards/TransactionCard";
 
 
 const Homepage = () => {
@@ -13,7 +14,7 @@ const Homepage = () => {
           <AppPieChart/>
         </div>
         <div className="bg-primary-foreground p-4 rounded-lg">
-          text
+          <TransactionCard title={'Latest Transaction'}/>
         </div>
         <div className="bg-primary-foreground p-4 rounded-lg">text</div>
         <div className="bg-primary-foreground p-4 rounded-lg lg:col-span-2 xl:col-span-1 2xl:col-span-2">
