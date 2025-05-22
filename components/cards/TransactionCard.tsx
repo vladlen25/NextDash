@@ -1,6 +1,6 @@
 import Image from "next/image";
-import { Card, CardContent, CardFooter, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import {Card, CardContent, CardFooter, CardTitle} from "@/components/ui/card";
+import {Badge} from "@/components/ui/badge";
 
 const popularContent = [
     {
@@ -88,7 +88,7 @@ const latestTransactions = [
     },
 ];
 
-const TransactionCard = ({ title }: { title: string }) => {
+const TransactionCard = ({title}: { title: string }) => {
     const list =
         title === "Popular Content" ? popularContent : latestTransactions;
     return (
