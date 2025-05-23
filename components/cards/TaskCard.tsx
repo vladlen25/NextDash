@@ -13,6 +13,9 @@ import {Button} from "@/components/ui/button";
 import {format} from "date-fns";
 import {Calendar} from "@/components/ui/calendar";
 import {Input} from "@/components/ui/input";
+import {useBrowserContext} from "@/context/BrowserContext";
+import {useDeviceContext} from "@/context/DeviceContext";
+import {useTaskContext} from "@/context/TaskContext";
 
 interface ITask {
     id: number;
@@ -73,8 +76,12 @@ const TaskCard = () => {
             setOpen(false);
         }
     };
+    const {browsers} = useBrowserContext();
+    const {devices} = useDeviceContext();
+    const {tasks} = useTaskContext();
     return (
         <div>
+
             <h1 className="text-lg font-medium mb-6">Task list</h1>
             <Popover open={open} onOpenChange={setOpen}>
                 <PopoverTrigger asChild>

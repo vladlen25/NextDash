@@ -6,6 +6,7 @@ import AppSidebar from "@/components/sidebar/AppSidebar";
 import {cookies} from "next/headers";
 import AppNavbar from "@/components/navbar/AppNavbar";
 import {ThemeProvider} from "@/components/providers/ThemeProvider";
+import {ContextProvider} from "@/context/Context";
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -40,15 +41,19 @@ export default async function RootLayout({
             enableSystem
             disableTransitionOnChange
         >
-            <SidebarProvider defaultOpen={defaultOpen}>
-                <AppSidebar/>
-                <main className="w-full">
-                    <AppNavbar/>
-                    <div className="px-4">{children}</div>
-                </main>
-            </SidebarProvider>
+            <ContextProvider>
+                <SidebarProvider defaultOpen={defaultOpen}>
+                    <AppSidebar/>
+                    <main className="w-full">
+                        <AppNavbar/>
+                        <div className="px-4">{children}</div>
+                    </main>
+                </SidebarProvider>
+            </ContextProvider>
         </ThemeProvider>
+
         </body>
         </html>
-    );
+    )
+        ;
 }
