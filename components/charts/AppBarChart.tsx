@@ -1,64 +1,71 @@
 "use client";
 import {
-    ChartContainer,
-    ChartLegend,
-    ChartLegendContent,
-    ChartTooltip,
-    ChartTooltipContent,
-    type ChartConfig
+  ChartContainer,
+  ChartLegend,
+  ChartLegendContent,
+  ChartTooltip,
+  ChartTooltipContent,
+  type ChartConfig,
 } from "@/components/ui/chart";
-import {Bar, BarChart, CartesianGrid, XAxis, YAxis} from "recharts";
-import {DesktopIcon, MobileIcon} from "@radix-ui/react-icons";
+import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from "recharts";
+import { DesktopIcon, MobileIcon } from "@radix-ui/react-icons";
+import { useBrowserContext } from "@/context/BrowserContext";
+import { useDeviceContext } from "@/context/DeviceContext";
+import { Button } from "@/components/ui/button";
+import React, {useState} from "react";
+import AppDeviceModal from "@/components/modal/AppDeviceModal";
 
 const chartConfig = {
-    desktop: {
-        label: "Desktop",
-        color: "var(--chart-1)",
-        icon: DesktopIcon
-    },
-    mobile: {
-        label: "Mobile",
-        color: "var(--chart-2)",
-        icon: MobileIcon
-    },
+  desktop: {
+    label: "Desktop",
+    color: "var(--chart-1)",
+    icon: DesktopIcon,
+  },
+  mobile: {
+    label: "Mobile",
+    color: "var(--chart-2)",
+    icon: MobileIcon,
+  },
 } satisfies ChartConfig;
 
-const chartData = [
-    {month: "January", desktop: 186, mobile: 80},
-    {month: "February", desktop: 305, mobile: 200},
-    {month: "March", desktop: 237, mobile: 120},
-    {month: "April", desktop: 73, mobile: 190},
-    {month: "May", desktop: 209, mobile: 130},
-    {month: "June", desktop: 214, mobile: 140},
-];
+
 
 const AppBarChart = () => {
-    return (
-        <div className="">
-            <h1 className="text-lg font-medium mb-6">Bar Chart - Multiple</h1>
-            <ChartContainer config={chartConfig} className="min-h-[200px] w-full">
-                <BarChart accessibilityLayer data={chartData}>
-                    <CartesianGrid vertical={false}/>
-                    <XAxis
-                        dataKey="month"
-                        tickLine={false}
-                        tickMargin={10}
-                        axisLine={false}
-                        tickFormatter={(value) => value.slice(0, 3)}
-                    />
-                    <YAxis
-                        tickLine={false}
-                        tickMargin={10}
-                        axisLine={false}
-                    />
-                    <ChartTooltip content={<ChartTooltipContent/>}/>
-                    <ChartLegend content={<ChartLegendContent/>}/>
-                    <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4}/>
-                    <Bar dataKey="mobile" fill="var(--color-mobile)" radius={4}/>
-                </BarChart>
-            </ChartContainer>
-        </div>
-    );
+
+  const { devices, updateDevice } = useDeviceContext();
+  const [modalOpen, setModalOpen] = useState(false);
+  return (
+    <div className="border rounded-lg">
+
+      <div className="flex justify-between space-x-4 mb-4 p-4">
+          <h1 className="text-lg font-medium mb-6">Bar Chart - Multiple</h1>
+        <AppDeviceModal
+            open={modalOpen}
+            onClose={() => setModalOpen(false)}
+            data={devices}
+            onUpdate={updateDevice}/>
+        <Button onClick={() => setModalOpen(true)}>Change Data</Button>
+      </div>
+
+      <ChartContainer config={chartConfig} className="min-h-[200px] w-full">
+        <BarChart accessibilityLayer data={devices}>
+          <CartesianGrid vertical={false} />
+          <XAxis
+            dataKey="month"
+            tickLine={false}
+            tickMargin={10}
+            axisLine={false}
+            tickFormatter={(value) => value.slice(0, 3)}
+          />
+          <YAxis tickLine={false} tickMargin={10} axisLine={false} />
+          <ChartTooltip content={<ChartTooltipContent />} />
+          <ChartLegend content={<ChartLegendContent />} />
+          <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4} />
+          <Bar dataKey="mobile" fill="var(--color-mobile)" radius={4} />
+        </BarChart>
+      </ChartContainer>
+    </div>
+  );
 };
 
 export default AppBarChart;
