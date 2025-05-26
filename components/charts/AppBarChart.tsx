@@ -9,11 +9,10 @@ import {
 } from "@/components/ui/chart";
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from "recharts";
 import { DesktopIcon, MobileIcon } from "@radix-ui/react-icons";
-import { useBrowserContext } from "@/context/BrowserContext";
-import { useDeviceContext } from "@/context/DeviceContext";
-import { Button } from "@/components/ui/button";
 import React, {useState} from "react";
 import AppDeviceModal from "@/components/modal/AppDeviceModal";
+import {useDeviceContext} from "@/context/DeviceContext";
+import {Button} from "@/components/ui/button";
 
 const chartConfig = {
   desktop: {

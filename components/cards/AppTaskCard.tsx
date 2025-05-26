@@ -74,7 +74,7 @@ const AppTaskCard = () => {
       <ScrollArea className="max-h-[550px] mt-4 overflow-y-auto">
         <div className="flex flex-col gap-4">
           {tasks.map((task) => (
-            <Card className="p-4">
+            <Card className="p-4" key={task.id}>
               <div className={"flex items-center gap-4"}>
                 <Checkbox
                   id={task.id.toString()}

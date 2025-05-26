@@ -1,7 +1,6 @@
 "use client";
 
 import * as React from "react";
-import { TrendingUp } from "lucide-react";
 import { Label, Pie, PieChart } from "recharts";
 
 import {
@@ -19,7 +18,6 @@ import {
   ChartTooltipContent,
 } from "@/components/ui/chart";
 import {useBrowserContext} from "@/context/BrowserContext";
-import AppDeviceModal from "@/components/modal/AppDeviceModal";
 import {Button} from "@/components/ui/button";
 import AppBrowserModal from "@/components/modal/AppBrowserModal";
 import {useState} from "react";
@@ -57,7 +55,7 @@ export function AppPieChart() {
 
   const totalVisitors = React.useMemo(() => {
     return browsers.reduce((acc, curr) => acc + curr.visitors, 0);
-  }, []);
+  }, [browsers]);
 
 
 

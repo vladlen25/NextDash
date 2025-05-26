@@ -2,7 +2,6 @@ import React, { FC, useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
-  DialogTrigger,
   DialogContent,
   DialogHeader,
   DialogTitle,
@@ -16,8 +15,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
-import { useBrowserContext } from "@/context/BrowserContext";
-import { useDeviceContext } from "@/context/DeviceContext";
 import { DeviceInterface } from "@/types/types";
 
 interface AppDeviceModalProps {
