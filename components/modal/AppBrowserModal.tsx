@@ -52,6 +52,7 @@ const AppBrowserModal: FC<AppBrowserModalProps> = ({
 
     return (
         <div>
+
             <Dialog open={open} onOpenChange={onClose}>
                 <DialogContent>
                     <DialogHeader>
@@ -85,6 +86,7 @@ const AppBrowserModal: FC<AppBrowserModalProps> = ({
                     </DialogFooter>
                 </DialogContent>
             </Dialog>
+
         </div>
     );
 };

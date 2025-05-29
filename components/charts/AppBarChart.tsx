@@ -13,6 +13,7 @@ import React, {useState} from "react";
 import AppDeviceModal from "@/components/modal/AppDeviceModal";
 import {useDeviceContext} from "@/context/DeviceContext";
 import {Button} from "@/components/ui/button";
+import {Card} from "@/components/ui/card";
 
 const chartConfig = {
   desktop: {
@@ -22,7 +23,7 @@ const chartConfig = {
   },
   mobile: {
     label: "Mobile",
-    color: "var(--chart-2)",
+    color: "var(--chart-4)",
     icon: MobileIcon,
   },
 } satisfies ChartConfig;
@@ -34,7 +35,8 @@ const AppBarChart = () => {
   const { devices, updateDevice } = useDeviceContext();
   const [modalOpen, setModalOpen] = useState(false);
   return (
-    <div className="border rounded-lg">
+
+      <Card className="h-full flex flex-col">
 
       <div className="flex justify-between space-x-4 mb-4 p-4">
           <h1 className="text-lg font-medium mb-6">Bar Chart - Multiple</h1>
@@ -63,7 +65,7 @@ const AppBarChart = () => {
           <Bar dataKey="mobile" fill="var(--color-mobile)" radius={4} />
         </BarChart>
       </ChartContainer>
-    </div>
+      </Card>
   );
 };
 

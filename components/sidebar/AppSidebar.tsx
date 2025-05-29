@@ -3,10 +3,10 @@
 import {
   Sidebar,
   SidebarContent,
-  SidebarSeparator,
   SidebarFooter,
   SidebarHeader,
 } from "@/components/ui/sidebar";
+import { Separator } from "@/components/ui/separator";
 
 import SidebarUserHeader from "@/components/sidebar/SidebarUserHeader";
 import SidebarApplicationGroup from "@/components/sidebar/SidebarApplicationGroup";
@@ -16,21 +16,23 @@ import SidebarNestedGroup from "@/components/sidebar/SidebarNestedGroup";
 import SidebarUserFooter from "@/components/sidebar/SidebarUserFooter";
 
 const AppSidebar = () => (
-  <Sidebar collapsible="icon">
-    <SidebarHeader>
-      <SidebarUserHeader />
-    </SidebarHeader>
-    <SidebarSeparator />
-    <SidebarContent>
-      <SidebarApplicationGroup />
-      <SidebarProjectsGroup />
-      <SidebarCollapsibleGroup />
-      <SidebarNestedGroup />
-    </SidebarContent>
-    <SidebarFooter>
-      <SidebarUserFooter />
-    </SidebarFooter>
-  </Sidebar>
+  <div>
+    <Sidebar collapsible="icon">
+      <SidebarHeader>
+        <SidebarUserHeader />
+      </SidebarHeader>
+      <Separator className="my-4" />
+      <SidebarContent>
+        <SidebarApplicationGroup />
+        <SidebarProjectsGroup />
+        <SidebarCollapsibleGroup />
+        <SidebarNestedGroup />
+      </SidebarContent>
+      <SidebarFooter>
+        <SidebarUserFooter />
+      </SidebarFooter>
+    </Sidebar>
+  </div>
 );
 
 export default AppSidebar;

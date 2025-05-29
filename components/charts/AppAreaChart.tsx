@@ -31,7 +31,7 @@ const chartConfig = {
   },
   mobile: {
     label: "Mobile",
-    color: "var(--chart-2)",
+    color: "var(--chart-4)",
   },
 } satisfies ChartConfig;
 
@@ -39,7 +39,7 @@ export function AppAreaChat() {
   const { devices, updateDevice } = useDeviceContext();
   const [modalOpen, setModalOpen] = useState(false);
   return (
-    <Card>
+    <Card className="h-full flex flex-col">
       <CardHeader>
 
         <div className="flex justify-between space-x-4 mb-4 p-2">

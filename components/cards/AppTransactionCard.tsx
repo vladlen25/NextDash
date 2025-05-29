@@ -92,8 +92,9 @@ const AppTransactionCard = ({ title }: { title: string }) => {
   const list =
     title === "Popular Content" ? popularContent : latestTransactions;
   return (
-    <div className="">
-      <h1 className="text-lg font-medium mb-6">{title}</h1>
+
+        <Card className="p-4 flex flex-col h-full">
+      <h1 className="text-lg font-medium">{title}</h1>
       <div className="flex flex-col gap-2">
         {list.map((item) => (
           <Card
@@ -118,7 +119,8 @@ const AppTransactionCard = ({ title }: { title: string }) => {
           </Card>
         ))}
       </div>
-    </div>
+
+      </Card>
   );
 };
 

@@ -55,6 +55,7 @@ const AppDeviceModal: FC<AppDeviceModalProps> = ({
 
   return (
     <div>
+
       <Dialog open={open} onOpenChange={onClose}>
         <DialogContent>
           <DialogHeader>
