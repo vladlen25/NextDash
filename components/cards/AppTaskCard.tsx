@@ -37,8 +37,7 @@ const AppTaskCard = () => {
 
   const { tasks, createTask, toggleTask, deleteTask } = useTaskContext();
   return (
-
-        <Card className=" h-full flex-col p-4">
+    <Card className=" h-full flex-col p-4">
       <h1 className="text-lg font-medium">Task list</h1>
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
@@ -75,7 +74,7 @@ const AppTaskCard = () => {
       <ScrollArea className="max-h-[550px] mt-4 overflow-y-auto">
         <div className="flex flex-col gap-4">
           {tasks.map((task) => (
-            <Card className={`p-4 ${task.completed ? 'bg-blue-200' : ''}`}>
+            <Card className={`p-4 ${task.completed ? "bg-blue-200" : ""}`} key={task.id}>
               <div className={"flex items-center gap-4"}>
                 <Checkbox
                   id={task.id.toString()}
@@ -83,8 +82,8 @@ const AppTaskCard = () => {
                   onCheckedChange={() => toggleTask(task.id)}
                   className={
                     task.completed
-                        ? "!text-blue-900 !bg-transparent !border-transparent"
-                        : "!p-1 !border-green-900 !bg-transparent"
+                      ? "!text-blue-900 !bg-transparent !border-transparent"
+                      : "!p-1 !border-green-900 !bg-transparent"
                   }
                 />
                 <label
@@ -110,7 +109,6 @@ const AppTaskCard = () => {
         </div>
       </ScrollArea>
     </Card>
-
   );
 };
 
