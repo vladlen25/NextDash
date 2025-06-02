@@ -1,11 +1,9 @@
 "use client";
 
-
 import { Area, AreaChart, CartesianGrid, XAxis, YAxis } from "recharts";
 
 import {
   Card,
-  CardContent,
   CardDescription,
   CardFooter,
   CardHeader,
@@ -17,12 +15,10 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
-import {useDeviceContext} from "@/context/DeviceContext";
-import React, {useState} from "react";
+import { useDeviceContext } from "@/context/DeviceContext";
+import React, { useState } from "react";
 import AppDeviceModal from "@/components/modal/AppDeviceModal";
-import {Button} from "@/components/ui/button";
-
-
+import { Button } from "@/components/ui/button";
 
 const chartConfig = {
   desktop: {
@@ -39,67 +35,67 @@ export function AppAreaChat() {
   const { devices, updateDevice } = useDeviceContext();
   const [modalOpen, setModalOpen] = useState(false);
   return (
-    <Card className="h-full flex flex-col">
+    <Card className="h-full flex flex-col ">
       <CardHeader>
-
         <div className="flex justify-between space-x-4 mb-4 p-2">
           <div>
-          <CardTitle className={"mb-2"}>Area Chart - Stacked</CardTitle>
-          <CardDescription>
-            Showing total visitors for the last 6 months
-          </CardDescription>
+            <CardTitle className={"mb-2"}>Area Chart - Stacked</CardTitle>
+            <CardDescription>
+              Showing total visitors for the last 6 months
+            </CardDescription>
           </div>
           <Button onClick={() => setModalOpen(true)}>Change Data</Button>
         </div>
         <AppDeviceModal
-            open={modalOpen}
-            onClose={() => setModalOpen(false)}
-            data={devices}
-            onUpdate={updateDevice}/>
+          open={modalOpen}
+          onClose={() => setModalOpen(false)}
+          data={devices}
+          onUpdate={updateDevice}
+        />
       </CardHeader>
-      <CardContent>
-        <ChartContainer config={chartConfig}>
-          <AreaChart
-            accessibilityLayer
-            data={devices}
-            margin={{
-              left: 12,
-              right: 12,
-            }}
-          >
-            <CartesianGrid vertical={false} />
-            <XAxis
-              dataKey="month"
-              tickLine={false}
-              axisLine={false}
-              tickMargin={8}
-              tickFormatter={(value) => value.slice(0, 3)}
-            />
-            <YAxis tickLine={false} axisLine={false} tickMargin={8} />
-            <ChartTooltip
-              cursor={false}
-              content={<ChartTooltipContent indicator="dot" />}
-            />
 
-            <Area
-              dataKey="mobile"
-              type="natural"
-              fill="var(--color-mobile)"
-              fillOpacity={0.4}
-              stroke="var(--color-mobile)"
-              stackId="a"
-            />
-            <Area
-              dataKey="desktop"
-              type="natural"
-              fill="var(--color-desktop)"
-              fillOpacity={0.4}
-              stroke="var(--color-desktop)"
-              stackId="a"
-            />
-          </AreaChart>
-        </ChartContainer>
-      </CardContent>
+      <ChartContainer config={chartConfig}>
+        <AreaChart
+          accessibilityLayer
+          data={devices}
+          margin={{
+            left: 12,
+            right: 12,
+          }}
+        >
+          <CartesianGrid vertical={false} />
+          <XAxis
+            dataKey="month"
+            tickLine={false}
+            axisLine={false}
+            tickMargin={8}
+            tickFormatter={(value) => value.slice(0, 3)}
+          />
+          <YAxis tickLine={false} axisLine={false} tickMargin={8} />
+          <ChartTooltip
+            cursor={false}
+            content={<ChartTooltipContent indicator="dot" />}
+          />
+
+          <Area
+            dataKey="mobile"
+            type="natural"
+            fill="var(--color-mobile)"
+            fillOpacity={0.4}
+            stroke="var(--color-mobile)"
+            stackId="a"
+          />
+          <Area
+            dataKey="desktop"
+            type="natural"
+            fill="var(--color-desktop)"
+            fillOpacity={0.4}
+            stroke="var(--color-desktop)"
+            stackId="a"
+          />
+        </AreaChart>
+      </ChartContainer>
+
       <CardFooter>
         <div className="flex w-full items-start gap-2 text-sm">
           {/*<div className="grid gap-2">*/}

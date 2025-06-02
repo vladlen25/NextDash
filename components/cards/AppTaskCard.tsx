@@ -14,6 +14,7 @@ import { format } from "date-fns";
 import { Calendar } from "@/components/ui/calendar";
 import { Input } from "@/components/ui/input";
 import { useTaskContext } from "@/context/TaskContext";
+import {useTheme} from "next-themes";
 
 const AppTaskCard = () => {
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(
@@ -36,6 +37,10 @@ const AppTaskCard = () => {
   };
 
   const { tasks, createTask, toggleTask, deleteTask } = useTaskContext();
+  const { theme } = useTheme();
+  if (theme === "dark") {
+    console.log("Dark theme");
+  }
   return (
     <Card className=" h-full flex-col p-4">
       <h1 className="text-lg font-medium">Task list</h1>
@@ -71,43 +76,39 @@ const AppTaskCard = () => {
           />
         </PopoverContent>
       </Popover>
-      <ScrollArea className="max-h-[550px] mt-4 overflow-y-auto">
+      <ScrollArea className="h-full w-full flex-1 [&>[data-radix-scroll-area-viewport]]:max-h-[calc(100vh-450px)] pr-4">
         <div className="flex flex-col gap-4">
           {tasks.map((task) => (
-            <Card className={`p-4 ${task.completed ? "bg-blue-200" : ""}`} key={task.id}>
-              <div className={"flex items-center gap-4"}>
-                <Checkbox
-                  id={task.id.toString()}
-                  checked={task.completed}
-                  onCheckedChange={() => toggleTask(task.id)}
-                  className={
-                    task.completed
-                      ? "!text-blue-900 !bg-transparent !border-transparent"
-                      : "!p-1 !border-green-900 !bg-transparent"
-                  }
-                />
-                <label
-                  htmlFor={task.id.toString()}
-                  className={`flex-1 text-sm text-muted-foreground ${task.completed ? "!text-blue-900" : ""}`}
-                >
-                  {task.title} -{" "}
-                  {task.date?.toLocaleDateString("en-US", {
-                    day: "numeric",
-                    month: "long",
-                  })}
-                </label>
-                <Button
-                  onClick={() => deleteTask(task.id)}
-                  variant="ghost"
-                  className="!bg-transparent hover:bg-transparent p-1 text-red-500 hover:text-red-600 cursor-pointer"
-                >
-                  <CircleXIcon className="" />
-                </Button>
-              </div>
-            </Card>
+              <Card className="p-4" key={task.id}>
+                <div className="flex items-center gap-4">
+                  <Checkbox
+                      id={task.id.toString()}
+                      checked={task.completed}
+                      onCheckedChange={() => toggleTask(task.id)}
+                  />
+                  <label
+                      htmlFor={task.id.toString()}
+                      className="flex-1 text-sm text-muted-foreground"
+                  >
+                    {task.title} –{" "}
+                    {task.date?.toLocaleDateString("en-US", {
+                      day: "numeric",
+                      month: "long",
+                    })}
+                  </label>
+                  <Button
+                      onClick={() => deleteTask(task.id)}
+                      variant="ghost"
+                      className="!bg-transparent hover:bg-transparent p-1 text-red-500 hover:text-red-600 cursor-pointer"
+                  >
+                    <CircleXIcon />
+                  </Button>
+                </div>
+              </Card>
           ))}
         </div>
       </ScrollArea>
+
     </Card>
   );
 };

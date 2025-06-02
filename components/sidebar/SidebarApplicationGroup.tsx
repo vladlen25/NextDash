@@ -1,5 +1,8 @@
 import Link from "next/link";
-import { Home, Inbox, Calendar, Search, Settings } from "lucide-react";
+import {
+  Home,
+  User2Icon, WalletIcon,
+} from "lucide-react";
 import {
   SidebarGroup,
   SidebarGroupLabel,
@@ -7,15 +10,12 @@ import {
   SidebarMenu,
   SidebarMenuItem,
   SidebarMenuButton,
-  SidebarMenuBadge,
 } from "@/components/ui/sidebar";
 
 const items = [
   { title: "Home", url: "/", icon: Home },
-  { title: "Inbox", url: "#", icon: Inbox },
-  { title: "Calendar", url: "#", icon: Calendar },
-  { title: "Search", url: "#", icon: Search },
-  { title: "Settings", url: "#", icon: Settings },
+  { title: "Users", url: "/users", icon: User2Icon },
+  { title: "Payments", url: "/payments", icon: WalletIcon}
 ];
 
 const SidebarApplicationGroup = () => (
@@ -23,7 +23,7 @@ const SidebarApplicationGroup = () => (
     <SidebarGroupLabel>Application</SidebarGroupLabel>
     <SidebarGroupContent>
       <SidebarMenu>
-        {items.map(({ title, url, icon: Icon }) => (
+        {items.map(({ title, url, icon: Icon, }) => (
           <SidebarMenuItem key={title}>
             <SidebarMenuButton asChild>
               <Link href={url}>
@@ -31,7 +31,7 @@ const SidebarApplicationGroup = () => (
                 <span>{title}</span>
               </Link>
             </SidebarMenuButton>
-            {title === "Inbox" && <SidebarMenuBadge>24</SidebarMenuBadge>}
+
           </SidebarMenuItem>
         ))}
       </SidebarMenu>

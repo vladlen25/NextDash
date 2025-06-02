@@ -22,7 +22,6 @@ const SidebarUserFooter = () => (
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
           <DropdownMenuItem>Account</DropdownMenuItem>
-          <DropdownMenuItem>Setting</DropdownMenuItem>
           <DropdownMenuItem>Sign out</DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>

@@ -2,6 +2,7 @@ import {
   DeviceInterface,
   BrowserInterface,
   TaskInterface,
+  UserInterface,
 } from "@/types/types";
 
 export const initialDevices: DeviceInterface[] = [
@@ -33,5 +34,208 @@ export const initialTasks: TaskInterface[] = [
     title: "task",
     date: new Date(),
     completed: false,
+  },
+];
+
+export const initialUsers: UserInterface[] = [
+  {
+    id: 1,
+    description: "Domain renewal",
+    username: "Lucas Bennett",
+    email: "lucasbennett@gmail.com",
+    image:
+      "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=800",
+    status: "pending",
+    amount: 870,
+  },
+  {
+    id: 2,
+    description: "Annual membership",
+    username: "Emily Sanders",
+    email: "emilysanders@gmail.com",
+    image:
+      "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=800",
+    status: "failed",
+    amount: 1050,
+  },
+  {
+    id: 3,
+    description: "One-time service fee",
+    username: "Mike Galloway",
+    email: "mikegalloway@gmail.com",
+    image:
+      "https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=800",
+    status: "success",
+    amount: 1200,
+  },
+  {
+    id: 4,
+    description: "Account upgrade",
+    username: "Minerva Robinson",
+    email: "minerbarobinson@gmail.com",
+    image:
+      "https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&w=800",
+    status: "failed",
+    amount: 1600,
+  },
+  {
+    id: 5,
+    description: "Course enrollment",
+    username: "Mable Clayton",
+    email: "mableclayton@gmail.com",
+    image:
+      "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=800",
+    status: "pending",
+    amount: 1800,
+  },
+  {
+    id: 6,
+    description: "Monthly plan payment",
+    username: "Nathan McDaniel",
+    email: "nathanmcdaniel@gmail.com",
+    image:
+      "https://images.pexels.com/photos/91224/pexels-photo-91224.jpeg?auto=compress&cs=tinysrgb&w=800",
+    status: "pending",
+    amount: 1100,
+  },
+  {
+    id: 7,
+    description: "E-book purchase",
+    username: "Myrtie Lamb",
+    email: "myrtielamb@gmail.com",
+    image:
+      "https://images.pexels.com/photos/1130626/pexels-photo-1130626.jpeg?auto=compress&cs=tinysrgb&w=800",
+    status: "success",
+    amount: 450,
+  },
+  {
+    id: 8,
+    description: "Software license",
+    username: "Leona Bryant",
+    email: "leonabryant@gmail.com",
+    image:
+      "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=800",
+    status: "success",
+    amount: 2100,
+  },
+  {
+    id: 9,
+    description: "Consulting session",
+    username: "Aaron Willis",
+    email: "aaronwillis@gmail.com",
+    image:
+      "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=800",
+    status: "pending",
+    amount: 1350,
+  },
+  {
+    id: 10,
+    description: "Donation",
+    username: "Joel Keller",
+    email: "joelkeller@gmail.com",
+    image:
+      "https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=800",
+    status: "failed",
+    amount: 3000,
+  },
+  {
+    id: 11,
+    description: "Video editing tools",
+    username: "Clara Jennings",
+    email: "clarajennings@gmail.com",
+    image:
+      "https://images.pexels.com/photos/3775535/pexels-photo-3775535.jpeg?auto=compress&cs=tinysrgb&w=800",
+    status: "success",
+    amount: 980,
+  },
+  {
+    id: 12,
+    description: "Cloud storage upgrade",
+    username: "Trevor Miles",
+    email: "trevormiles@gmail.com",
+    image:
+      "https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=800",
+    status: "pending",
+    amount: 1250,
+  },
+  {
+    id: 13,
+    description: "Webinar ticket",
+    username: "Olivia Patterson",
+    email: "oliviapatterson@gmail.com",
+    image:
+      "https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=800",
+    status: "failed",
+    amount: 400,
+  },
+  {
+    id: 14,
+    description: "Plugin installation",
+    username: "Raymond Chen",
+    email: "raymondchen@gmail.com",
+    image:
+      "https://images.pexels.com/photos/1704488/pexels-photo-1704488.jpeg?auto=compress&cs=tinysrgb&w=800",
+    status: "success",
+    amount: 730,
+  },
+  {
+    id: 15,
+    description: "Software bundle",
+    username: "Natalie Ruiz",
+    email: "natalieruiz@gmail.com",
+    image:
+      "https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&w=800",
+    status: "pending",
+    amount: 1950,
+  },
+  {
+    id: 16,
+    description: "Support contribution",
+    username: "Bryce Newman",
+    email: "brycenewman@gmail.com",
+    image:
+      "https://images.pexels.com/photos/91224/pexels-photo-91224.jpeg?auto=compress&cs=tinysrgb&w=800",
+    status: "success",
+    amount: 300,
+  },
+  {
+    id: 17,
+    description: "Business tools package",
+    username: "Diana Holloway",
+    email: "dianaholloway@gmail.com",
+    image:
+      "https://images.pexels.com/photos/1130626/pexels-photo-1130626.jpeg?auto=compress&cs=tinysrgb&w=800",
+    status: "failed",
+    amount: 1470,
+  },
+  {
+    id: 18,
+    description: "Hosting service",
+    username: "George Turner",
+    email: "georgeturner@gmail.com",
+    image:
+      "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=800",
+    status: "pending",
+    amount: 890,
+  },
+  {
+    id: 19,
+    description: "Design assets",
+    username: "Lena Marks",
+    email: "lenamarks@gmail.com",
+    image:
+      "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=800",
+    status: "success",
+    amount: 680,
+  },
+  {
+    id: 20,
+    description: "Online training",
+    username: "Samuel Knight",
+    email: "samuelknight@gmail.com",
+    image:
+      "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=800",
+    status: "failed",
+    amount: 1600,
   },
 ];

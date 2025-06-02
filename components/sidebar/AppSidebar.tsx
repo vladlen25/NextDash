@@ -10,9 +10,6 @@ import { Separator } from "@/components/ui/separator";
 
 import SidebarUserHeader from "@/components/sidebar/SidebarUserHeader";
 import SidebarApplicationGroup from "@/components/sidebar/SidebarApplicationGroup";
-import SidebarProjectsGroup from "@/components/sidebar/SidebarProjectsGroup";
-import SidebarCollapsibleGroup from "@/components/sidebar/SidebarCollapsibleGroup";
-import SidebarNestedGroup from "@/components/sidebar/SidebarNestedGroup";
 import SidebarUserFooter from "@/components/sidebar/SidebarUserFooter";
 
 const AppSidebar = () => (
@@ -21,12 +18,12 @@ const AppSidebar = () => (
       <SidebarHeader>
         <SidebarUserHeader />
       </SidebarHeader>
-      <Separator className="my-4" />
+      <Separator className="my-4 mb-0 mt-0" />
       <SidebarContent>
         <SidebarApplicationGroup />
-        <SidebarProjectsGroup />
-        <SidebarCollapsibleGroup />
-        <SidebarNestedGroup />
+        {/*<SidebarProjectsGroup />*/}
+        {/*<SidebarCollapsibleGroup />*/}
+        {/*<SidebarNestedGroup />*/}
       </SidebarContent>
       <SidebarFooter>
         <SidebarUserFooter />

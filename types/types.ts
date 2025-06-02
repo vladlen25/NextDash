@@ -18,3 +18,13 @@ export interface TaskInterface {
   date: Date | undefined;
   completed: boolean;
 }
+
+export interface UserInterface {
+  id: number;
+  description: string;
+  username: string;
+  email: string;
+  image: string;
+  status: 'success' | 'pending' | 'failed';
+  amount: number;
+}

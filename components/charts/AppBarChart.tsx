@@ -48,7 +48,7 @@ const AppBarChart = () => {
         <Button onClick={() => setModalOpen(true)}>Change Data</Button>
       </div>
 
-      <ChartContainer config={chartConfig} className="min-h-[200px] w-full">
+      <ChartContainer config={chartConfig} className="min-h-[200px] w-full ">
         <BarChart accessibilityLayer data={devices}>
           <CartesianGrid vertical={false} />
           <XAxis
