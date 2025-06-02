@@ -14,7 +14,7 @@ import { cn } from "@/lib/utils";
 import { ColumnDef } from "@tanstack/react-table";
 import { ArrowUpDown, MoreHorizontal } from "lucide-react";
 import { UserInterface } from "@/types/types";
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
 
 export const columns: ColumnDef<UserInterface>[] = [
   {
@@ -90,7 +90,7 @@ export const columns: ColumnDef<UserInterface>[] = [
     id: "actions",
     cell: ({ row }) => {
       const payment = row.original;
-      const router = useRouter();
+      // const router = useRouter();
       return (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -110,9 +110,9 @@ export const columns: ColumnDef<UserInterface>[] = [
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem
-              onClick={() =>
-                router.push(`/users/${row.original.id.toString()}`)
-              }
+              // onClick={() =>
+              //   router.push(`/users/${row.original.id.toString()}`)
+              // }
             >
               View customer
             </DropdownMenuItem>
