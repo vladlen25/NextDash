@@ -8,6 +8,7 @@ interface UserContextType {
     createUser: (user: UserInterface) => void;
     updateUser: (user: UserInterface) => void;
     deleteUser: (id: number) => void;
+    getUserById: (id: number) => UserInterface | undefined;
 }
 
 const UserContext = createContext<UserContextType | undefined>(undefined);
@@ -20,9 +21,10 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children
         setUsers(users.map(u => (u.id === user.id ? user : u)));
     const deleteUser = (id: number) =>
         setUsers(users.filter(u => u.id !== id));
+    const getUserById = (id: number) => users.find((u) => u.id === id);
 
     return (
-        <UserContext.Provider value={{ users, createUser, updateUser, deleteUser }}>
+        <UserContext.Provider value={{ users, createUser, updateUser, deleteUser, getUserById }}>
             {children}
         </UserContext.Provider>
     );

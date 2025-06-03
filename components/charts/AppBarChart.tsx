@@ -9,11 +9,11 @@ import {
 } from "@/components/ui/chart";
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from "recharts";
 import { DesktopIcon, MobileIcon } from "@radix-ui/react-icons";
-import React, {useState} from "react";
+import React, { useState } from "react";
 import AppDeviceModal from "@/components/modal/AppDeviceModal";
-import {useDeviceContext} from "@/context/DeviceContext";
-import {Button} from "@/components/ui/button";
-import {Card} from "@/components/ui/card";
+import { useDeviceContext } from "@/context/DeviceContext";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 
 const chartConfig = {
   desktop: {
@@ -28,23 +28,19 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 
-
-
 const AppBarChart = () => {
-
   const { devices, updateDevice } = useDeviceContext();
   const [modalOpen, setModalOpen] = useState(false);
   return (
-
-      <Card className="h-full flex flex-col">
-
+    <Card className="h-full flex flex-col">
       <div className="flex justify-between space-x-4 mb-4 p-4">
-          <h1 className="text-lg font-medium mb-6">Bar Chart - Multiple</h1>
+        <h1 className="text-lg font-medium mb-6">Bar Chart - Multiple</h1>
         <AppDeviceModal
-            open={modalOpen}
-            onClose={() => setModalOpen(false)}
-            data={devices}
-            onUpdate={updateDevice}/>
+          open={modalOpen}
+          onClose={() => setModalOpen(false)}
+          data={devices}
+          onUpdate={updateDevice}
+        />
         <Button onClick={() => setModalOpen(true)}>Change Data</Button>
       </div>
 
@@ -65,7 +61,7 @@ const AppBarChart = () => {
           <Bar dataKey="mobile" fill="var(--color-mobile)" radius={4} />
         </BarChart>
       </ChartContainer>
-      </Card>
+    </Card>
   );
 };
 

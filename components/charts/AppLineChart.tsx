@@ -2,15 +2,13 @@
 
 import { CartesianGrid, Line, LineChart, XAxis, YAxis } from "recharts";
 import { ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
+import {useDeviceContext} from "@/context/DeviceContext";
+import React, {useState} from "react";
+import AppDeviceModal from "@/components/modal/AppDeviceModal";
+import {Button} from "@/components/ui/button";
+import {Card} from "@/components/ui/card";
 
-const chartData = [
-    { month: "January", desktop: 186, mobile: 80 },
-    { month: "February", desktop: 305, mobile: 200 },
-    { month: "March", desktop: 237, mobile: 120 },
-    { month: "April", desktop: 73, mobile: 190 },
-    { month: "May", desktop: 209, mobile: 130 },
-    { month: "June", desktop: 214, mobile: 140 },
-];
+
 const chartConfig = {
     desktop: {
         label: "Desktop",
@@ -23,11 +21,26 @@ const chartConfig = {
 } satisfies ChartConfig;
 
 const AppLineChart = () => {
+    const { devices, updateDevice } = useDeviceContext();
+    const [modalOpen, setModalOpen] = useState(false);
+
     return (
+        <Card className="h-full flex flex-col  p-0 border-0" >
+
+            <div className="flex justify-between space-x-4 mb-4 p-4">
+                <h1 className="text-xl font-semibold pl-4">User Activity</h1>
+
+                <AppDeviceModal
+                    open={modalOpen}
+                    onClose={() => setModalOpen(false)}
+                    data={devices}
+                    onUpdate={updateDevice}/>
+                <Button onClick={() => setModalOpen(true)}>Change Data</Button>
+            </div>
         <ChartContainer config={chartConfig} className="mt-6">
             <LineChart
                 accessibilityLayer
-                data={chartData}
+                data={devices}
                 margin={{
                     left: 12,
                     right: 12,
@@ -63,6 +76,8 @@ const AppLineChart = () => {
                 />
             </LineChart>
         </ChartContainer>
+        </Card>
+
     );
 };
 

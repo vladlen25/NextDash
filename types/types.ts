@@ -27,4 +27,7 @@ export interface UserInterface {
   image: string;
   status: 'success' | 'pending' | 'failed';
   amount: number;
+  phone: string;
+  location: string;
+  role: 'admin' | 'user';
 }

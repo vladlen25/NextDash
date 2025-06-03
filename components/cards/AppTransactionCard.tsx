@@ -6,15 +6,16 @@ import { Card, CardContent, CardFooter, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useUserContext } from "@/context/UserContext";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import {useRouter} from "next/navigation";
 
 
 
 const AppTransactionCard = ({ title }: { title: string }) => {
   const { users } = useUserContext();
-
+    const router = useRouter();
   // title === "Popular Content" ? popularContent : users;
   return (
-    <Card className="p-4 flex flex-col h-full">
+    <Card className="p-4 flex flex-col h-full  ">
       <h1 className="text-lg font-medium mb-2">{title}</h1>
 
       <ScrollArea className="h-full w-full flex-1 [&>[data-radix-scroll-area-viewport]]:max-h-[calc(100vh-400px)] pr-4">
@@ -22,7 +23,8 @@ const AppTransactionCard = ({ title }: { title: string }) => {
           {users.map((item) => (
             <Card
               key={item.id}
-              className="flex-row items-center justify-between gap-4 p-4"
+              className="flex-row items-center justify-between gap-4 p-4 cursor-pointer !border border-gray-300 hover:bg-green-100 dark:hover:bg-gray-900 "
+              onClick={() => router.push(`/users/${item.id.toString()}`)}
             >
               <div className="w-12 h-12 rounded-sm relative overflow-hidden">
                 <Image

@@ -14,9 +14,11 @@ import {
 import { Button } from "@/components/ui/button";
 import { useTheme } from "next-themes";
 import { SidebarTrigger } from "@/components/ui/sidebar";
+import {useRouter} from "next/navigation";
 
 const AppNavbar = () => {
   const { setTheme } = useTheme();
+  const router = useRouter();
   return (
     <nav className="p-4 flex items-center justify-between sticky top-0 bg-background z-10">
       <SidebarTrigger />
@@ -45,16 +47,16 @@ const AppNavbar = () => {
         </DropdownMenu>
         {/* USER MENU */}
         <DropdownMenu>
-          <DropdownMenuTrigger>
+          <DropdownMenuTrigger className="focus:outline-none">
             <Avatar>
-              <AvatarImage src="https://github.com/shadcn.png" />
+              <AvatarImage  src="https://github.com/shadcn.png" />
               <AvatarFallback>CN</AvatarFallback>
             </Avatar>
           </DropdownMenuTrigger>
           <DropdownMenuContent sideOffset={10}>
             <DropdownMenuLabel>My Account</DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>
+            <DropdownMenuItem onClick={() => router.push(`/users/0`)} >
               <User className="h-[1.2rem] w-[1.2rem] mr-2" />
               Profile
             </DropdownMenuItem>
