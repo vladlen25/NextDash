@@ -68,7 +68,7 @@ const SearchUser: React.FC<SearchUserProps> = ({
   useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
+  }, [handleClickOutside]);
 
   return (
     <div ref={containerRef} className="relative w-full mb-4">
