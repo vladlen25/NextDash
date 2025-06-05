@@ -6,13 +6,16 @@ import { Button } from "@/components/ui/button";
 import { useUserContext } from "@/context/UserContext";
 import { useRouter } from "next/navigation";
 
-export default function UserGrid() {
+export default function UserList() {
   const { users } = useUserContext();
   const router = useRouter();
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 ">
+    <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-10">
       {users.map((user) => (
-        <Card key={user.id} className="p-4 shadow-md rounded-lg border border-gray-400">
+        <Card
+          key={user.id}
+          className="p-4 shadow-md rounded-lg border border-gray-400"
+        >
           <div className="flex justify-between items-center">
             {/* Левая часть: аватар и данные */}
             <div className="flex flex-col items-start space-y-1">

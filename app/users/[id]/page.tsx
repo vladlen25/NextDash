@@ -1,25 +1,19 @@
 "use client";
-
 import { Badge } from "@/components/ui/badge";
 import {
   Breadcrumb,
   BreadcrumbItem,
-  BreadcrumbLink,
   BreadcrumbList,
-  BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-
-import { Progress } from "@/components/ui/progress";
-
 import { Sheet } from "@/components/ui/sheet";
-
-import EditUser from "@/components/EditUser";
+import EditUser from "./EditUser";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import AppLineChart from "@/components/charts/AppLineChart";
 import { useParams } from "next/navigation";
 import { useUserContext } from "@/context/UserContext";
 import { Card } from "@/components/ui/card";
+import Link from "next/link";
 
 const SingleUserPage = () => {
   const params = useParams();
@@ -36,15 +30,21 @@ const SingleUserPage = () => {
       <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem>
-            <BreadcrumbLink href="/">Home</BreadcrumbLink>
+            <Link href="/" className="hover:text-white">
+              Home
+            </Link>
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
-            <BreadcrumbLink href="/users">Users</BreadcrumbLink>
+            <Link href="/users" className="hover:text-white">
+              Users
+            </Link>
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
-            <BreadcrumbPage>{user.username}</BreadcrumbPage>
+            <Link href={`/users/${id}`} className="hover:text-white">
+              {user?.username}
+            </Link>
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
@@ -80,12 +80,6 @@ const SingleUserPage = () => {
               </Sheet>
             </div>
             <div className="space-y-4 mt-4">
-              <div className="flex flex-col gap-2 mb-8">
-                <p className="text-sm text-muted-foreground">
-                  Profile completion
-                </p>
-                <Progress value={66} />
-              </div>
               <div className="flex items-center gap-2">
                 <span className="font-bold">Username:</span>
                 <span>{user.username}</span>

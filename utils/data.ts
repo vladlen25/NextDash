@@ -39,7 +39,7 @@ export const initialTasks: TaskInterface[] = [
 
 export const initialUsers: UserInterface[] = [
   {
-    id: 0,
+    id: 1,
     description: "Owner",
     username: "Morty Smith",
     email: "MortySmith@gmail.com",
@@ -51,7 +51,7 @@ export const initialUsers: UserInterface[] = [
     role: "admin",
   },
   {
-    id: 1,
+    id: 2,
     description: "Domain renewal",
     username: "Lucas Bennett",
     email: "lucasbennett@gmail.com",
@@ -63,7 +63,7 @@ export const initialUsers: UserInterface[] = [
     role: "admin",
   },
   {
-    id: 2,
+    id: 3,
     description: "Annual membership",
     username: "Emily Sanders",
     email: "emilysanders@gmail.com",
@@ -75,7 +75,7 @@ export const initialUsers: UserInterface[] = [
     role: "admin",
   },
   {
-    id: 3,
+    id: 4,
     description: "One-time service fee",
     username: "Mike Galloway",
     email: "mikegalloway@gmail.com",
@@ -87,7 +87,7 @@ export const initialUsers: UserInterface[] = [
     role: "user",
   },
   {
-    id: 4,
+    id: 5,
     description: "Account upgrade",
     username: "Minerva Robinson",
     email: "minerbarobinson@gmail.com",
@@ -99,7 +99,7 @@ export const initialUsers: UserInterface[] = [
     role: "user",
   },
   {
-    id: 5,
+    id: 6,
     description: "Course enrollment",
     username: "Mable Clayton",
     email: "mableclayton@gmail.com",
@@ -111,7 +111,7 @@ export const initialUsers: UserInterface[] = [
     role: "user",
   },
   {
-    id: 6,
+    id: 7,
     description: "Monthly plan payment",
     username: "Nathan McDaniel",
     email: "nathanmcdaniel@gmail.com",
@@ -123,7 +123,7 @@ export const initialUsers: UserInterface[] = [
     role: "user",
   },
   {
-    id: 7,
+    id: 8,
     description: "E-book purchase",
     username: "Myrtie Lamb",
     email: "myrtielamb@gmail.com",
@@ -135,7 +135,7 @@ export const initialUsers: UserInterface[] = [
     role: "user",
   },
   {
-    id: 8,
+    id: 9,
     description: "Software license",
     username: "Leona Bryant",
     email: "leonabryant@gmail.com",
@@ -147,7 +147,7 @@ export const initialUsers: UserInterface[] = [
     role: "user",
   },
   {
-    id: 9,
+    id: 10,
     description: "Consulting session",
     username: "Aaron Willis",
     email: "aaronwillis@gmail.com",
@@ -159,7 +159,7 @@ export const initialUsers: UserInterface[] = [
     role: "user",
   },
   {
-    id: 10,
+    id: 11,
     description: "Donation",
     username: "Joel Keller",
     email: "joelkeller@gmail.com",
@@ -171,7 +171,7 @@ export const initialUsers: UserInterface[] = [
     role: "user",
   },
   {
-    id: 11,
+    id: 12,
     description: "Video editing tools",
     username: "Clara Jennings",
     email: "clarajennings@gmail.com",
@@ -183,7 +183,7 @@ export const initialUsers: UserInterface[] = [
     role: "user",
   },
   {
-    id: 12,
+    id: 13,
     description: "Cloud storage upgrade",
     username: "Trevor Miles",
     email: "trevormiles@gmail.com",
@@ -195,7 +195,7 @@ export const initialUsers: UserInterface[] = [
     role: "user",
   },
   {
-    id: 13,
+    id: 14,
     description: "Webinar ticket",
     username: "Olivia Patterson",
     email: "oliviapatterson@gmail.com",
@@ -207,7 +207,7 @@ export const initialUsers: UserInterface[] = [
     role: "user",
   },
   {
-    id: 14,
+    id: 15,
     description: "Plugin installation",
     username: "Raymond Chen",
     email: "raymondchen@gmail.com",
@@ -219,7 +219,7 @@ export const initialUsers: UserInterface[] = [
     role: "user",
   },
   {
-    id: 15,
+    id: 16,
     description: "Software bundle",
     username: "Natalie Ruiz",
     email: "natalieruiz@gmail.com",
@@ -231,7 +231,7 @@ export const initialUsers: UserInterface[] = [
     role: "user",
   },
   {
-    id: 16,
+    id: 17,
     description: "Support contribution",
     username: "Bryce Newman",
     email: "brycenewman@gmail.com",
@@ -243,7 +243,7 @@ export const initialUsers: UserInterface[] = [
     role: "user",
   },
   {
-    id: 17,
+    id: 18,
     description: "Business tools package",
     username: "Diana Holloway",
     email: "dianaholloway@gmail.com",
@@ -255,7 +255,7 @@ export const initialUsers: UserInterface[] = [
     role: "user",
   },
   {
-    id: 18,
+    id: 19,
     description: "Hosting service",
     username: "George Turner",
     email: "georgeturner@gmail.com",
@@ -267,7 +267,7 @@ export const initialUsers: UserInterface[] = [
     role: "user",
   },
   {
-    id: 19,
+    id: 20,
     description: "Design assets",
     username: "Lena Marks",
     email: "lenamarks@gmail.com",
@@ -278,17 +278,6 @@ export const initialUsers: UserInterface[] = [
     location: "Tampa, FL",
     role: "user",
   },
-  {
-    id: 20,
-    description: "Online training",
-    username: "Samuel Knight",
-    email: "samuelknight@gmail.com",
-    image: "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=800",
-    status: "failed",
-    amount: 1600,
-    phone: "+1 202-555-0130",
-    location: "Salt Lake City, UT",
-    role: "user",
-  },
 ];
+
 
