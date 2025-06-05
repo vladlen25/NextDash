@@ -40,7 +40,7 @@ const AppDeviceModal: FC<AppDeviceModalProps> = ({
       setDesktopValue(selected.desktop);
       setMobileValue(selected.mobile);
     }
-  }, [selectedMonth]);
+  }, [selectedMonth, selected]);
 
   const handleSave = () => {
     if (selected) {

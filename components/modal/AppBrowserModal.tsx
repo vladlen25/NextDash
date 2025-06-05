@@ -38,7 +38,7 @@ const AppBrowserModal: FC<AppBrowserModalProps> = ({
         if (selected) {
             setVisitorsValue(selected.visitors);
         }
-    }, [selectedBrowser]);
+    }, [selectedBrowser, selected]);
 
     const handleSave = () => {
         if (selected) {

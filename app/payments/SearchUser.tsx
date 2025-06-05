@@ -1,6 +1,6 @@
 // SearchUser.tsx
 "use client";
-import React, { useState, useRef, useEffect } from "react";
+import React, {useState, useRef, useEffect, useCallback} from "react";
 import { Search, X } from "lucide-react";
 import { UserInterface } from "@/types/types";
 
@@ -56,19 +56,19 @@ const SearchUser: React.FC<SearchUserProps> = ({
     }
   };
 
-  const handleClickOutside = (e: MouseEvent) => {
+  const handleClickOutside = useCallback((e: MouseEvent) => {
     if (
-      containerRef.current &&
-      !containerRef.current.contains(e.target as Node)
+        containerRef.current &&
+        !containerRef.current.contains(e.target as Node)
     ) {
       setOpen(false);
     }
-  };
+  }, [containerRef, setOpen]);
 
   useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, [handleClickOutside]);
+  }, []);
 
   return (
     <div ref={containerRef} className="relative w-full mb-4">
@@ -124,7 +124,7 @@ const SearchUser: React.FC<SearchUserProps> = ({
             </>
           ) : (
             <div className="px-4 py-2 text-sm text-muted-foreground">
-              No users found for "{searchValue}"
+              No users found for {searchValue}
             </div>
           )}
         </div>
