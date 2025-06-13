@@ -15,10 +15,19 @@ import { Button } from "@/components/ui/button";
 import { useTheme } from "next-themes";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import {useRouter} from "next/navigation";
+import {useEffect} from "react";
+import {useAuth} from "@/context/AuthContext";
 
 const AppNavbar = () => {
   const { setTheme } = useTheme();
   const router = useRouter();
+  const { user, logout } = useAuth();
+
+  useEffect(() => {
+    if (!user) router.push("/login");
+  }, [user]);
+
+  if (!user) return null;
   return (
     <nav className="p-4 flex items-center justify-between sticky top-0 bg-background z-10">
       <SidebarTrigger />
@@ -60,8 +69,8 @@ const AppNavbar = () => {
               <User className="h-[1.2rem] w-[1.2rem] mr-2" />
               Profile
             </DropdownMenuItem>
-            <DropdownMenuItem variant="destructive">
-              <LogOut className="h-[1.2rem] w-[1.2rem] mr-2" />
+            <DropdownMenuItem onClick={logout} variant="destructive">
+              <LogOut  className="h-[1.2rem] w-[1.2rem] mr-2" />
               Logout
             </DropdownMenuItem>
           </DropdownMenuContent>

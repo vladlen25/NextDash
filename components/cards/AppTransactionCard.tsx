@@ -10,13 +10,12 @@ import {useRouter} from "next/navigation";
 
 
 
-const AppTransactionCard = ({ title }: { title: string }) => {
+const AppTransactionCard = () => {
   const { users } = useUserContext();
     const router = useRouter();
-  // title === "Popular Content" ? popularContent : users;
   return (
     <Card className="p-4 flex flex-col h-full  ">
-      <h1 className="text-lg font-medium mb-2">{title}</h1>
+      <h1 className="text-lg font-medium mb-2">Latest Transaction</h1>
 
       <ScrollArea className="h-full w-full flex-1 [&>[data-radix-scroll-area-viewport]]:max-h-[calc(100vh-400px)] pr-4">
         <div className="flex flex-col gap-2">

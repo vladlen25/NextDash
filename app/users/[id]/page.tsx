@@ -26,7 +26,7 @@ const SingleUserPage = () => {
   }
 
   return (
-    <div className="">
+    <div className="px-4 mb-8">
       <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem>
@@ -87,6 +87,10 @@ const SingleUserPage = () => {
               <div className="flex items-center gap-2">
                 <span className="font-bold">Email:</span>
                 <span>{user.email}</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="font-bold">Password:</span>
+                <span>{user.password}</span>
               </div>
               <div className="flex items-center gap-2">
                 <span className="font-bold">Description:</span>

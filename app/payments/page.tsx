@@ -20,7 +20,7 @@ const PaymentsPage: FC = () => {
   };
 
   return (
-    <div className="mb-8">
+    <div className="mb-8 p-4">
       <div className="mb-4 px-4 py-2 bg-secondary rounded-md">
         <h1 className="font-semibold">All Payments</h1>
       </div>

@@ -21,6 +21,7 @@ export interface TaskInterface {
 
 export interface UserInterface {
   id: number;
+  password: string;
   description: string;
   username: string;
   email: string;
@@ -30,4 +31,17 @@ export interface UserInterface {
   phone: string;
   location: string;
   role: 'admin' | 'user';
+}
+
+export interface ContentInterface {
+  id: number;
+  password: string; // может быть токен доступа или ID, если нужно
+  title: string;
+  description: string;
+  creator: string;
+  image: string;
+  status: "published" | "draft" | "archived";
+  views: number;
+  type: "video" | "article" | "podcast";
+  platform: string;
 }

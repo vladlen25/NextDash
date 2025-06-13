@@ -1,6 +1,6 @@
 import Link from "next/link";
 import {
-  Home,
+  Home, TableOfContents,
   User2Icon, WalletIcon,
 } from "lucide-react";
 import {
@@ -15,6 +15,7 @@ import {
 const items = [
   { title: "Home", url: "/", icon: Home },
   { title: "Users", url: "/users", icon: User2Icon },
+  { title: "Content", url: "/content", icon: TableOfContents},
   { title: "Payments", url: "/payments", icon: WalletIcon}
 ];
 
@@ -27,7 +28,7 @@ const SidebarApplicationGroup = () => (
           <SidebarMenuItem key={title}>
             <SidebarMenuButton asChild>
               <Link href={url}>
-                <Icon />
+                <Icon/>
                 <span>{title}</span>
               </Link>
             </SidebarMenuButton>

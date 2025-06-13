@@ -3,6 +3,7 @@ import {
   BrowserInterface,
   TaskInterface,
   UserInterface,
+  ContentInterface,
 } from "@/types/types";
 
 export const initialDevices: DeviceInterface[] = [
@@ -40,6 +41,7 @@ export const initialTasks: TaskInterface[] = [
 export const initialUsers: UserInterface[] = [
   {
     id: 1,
+    password: "0000",
     description: "Owner",
     username: "Morty Smith",
     email: "MortySmith@gmail.com",
@@ -52,10 +54,12 @@ export const initialUsers: UserInterface[] = [
   },
   {
     id: 2,
+    password: "0001",
     description: "Domain renewal",
     username: "Lucas Bennett",
     email: "lucasbennett@gmail.com",
-    image: "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=800",
+    image:
+      "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=800",
     status: "pending",
     amount: 870,
     phone: "+1 202-555-0111",
@@ -64,10 +68,12 @@ export const initialUsers: UserInterface[] = [
   },
   {
     id: 3,
+    password: "0002",
     description: "Annual membership",
     username: "Emily Sanders",
     email: "emilysanders@gmail.com",
-    image: "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=800",
+    image:
+      "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=800",
     status: "failed",
     amount: 1050,
     phone: "+1 202-555-0112",
@@ -76,10 +82,12 @@ export const initialUsers: UserInterface[] = [
   },
   {
     id: 4,
+    password: "0003",
     description: "One-time service fee",
     username: "Mike Galloway",
     email: "mikegalloway@gmail.com",
-    image: "https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=800",
+    image:
+      "https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=800",
     status: "success",
     amount: 1200,
     phone: "+1 202-555-0113",
@@ -88,10 +96,12 @@ export const initialUsers: UserInterface[] = [
   },
   {
     id: 5,
+    password: "0004",
     description: "Account upgrade",
     username: "Minerva Robinson",
     email: "minerbarobinson@gmail.com",
-    image: "https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&w=800",
+    image:
+      "https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&w=800",
     status: "failed",
     amount: 1600,
     phone: "+1 202-555-0114",
@@ -100,10 +110,12 @@ export const initialUsers: UserInterface[] = [
   },
   {
     id: 6,
+    password: "0005",
     description: "Course enrollment",
     username: "Mable Clayton",
     email: "mableclayton@gmail.com",
-    image: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=800",
+    image:
+      "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=800",
     status: "pending",
     amount: 1800,
     phone: "+1 202-555-0115",
@@ -112,10 +124,12 @@ export const initialUsers: UserInterface[] = [
   },
   {
     id: 7,
+    password: "0006",
     description: "Monthly plan payment",
     username: "Nathan McDaniel",
     email: "nathanmcdaniel@gmail.com",
-    image: "https://images.pexels.com/photos/91224/pexels-photo-91224.jpeg?auto=compress&cs=tinysrgb&w=800",
+    image:
+      "https://images.pexels.com/photos/91224/pexels-photo-91224.jpeg?auto=compress&cs=tinysrgb&w=800",
     status: "pending",
     amount: 1100,
     phone: "+1 202-555-0116",
@@ -124,10 +138,12 @@ export const initialUsers: UserInterface[] = [
   },
   {
     id: 8,
+    password: "0007",
     description: "E-book purchase",
     username: "Myrtie Lamb",
     email: "myrtielamb@gmail.com",
-    image: "https://images.pexels.com/photos/1130626/pexels-photo-1130626.jpeg?auto=compress&cs=tinysrgb&w=800",
+    image:
+      "https://images.pexels.com/photos/1130626/pexels-photo-1130626.jpeg?auto=compress&cs=tinysrgb&w=800",
     status: "success",
     amount: 450,
     phone: "+1 202-555-0117",
@@ -136,10 +152,12 @@ export const initialUsers: UserInterface[] = [
   },
   {
     id: 9,
+    password: "0008",
     description: "Software license",
     username: "Leona Bryant",
     email: "leonabryant@gmail.com",
-    image: "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=800",
+    image:
+      "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=800",
     status: "success",
     amount: 2100,
     phone: "+1 202-555-0118",
@@ -148,10 +166,12 @@ export const initialUsers: UserInterface[] = [
   },
   {
     id: 10,
+    password: "0009",
     description: "Consulting session",
     username: "Aaron Willis",
     email: "aaronwillis@gmail.com",
-    image: "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=800",
+    image:
+      "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=800",
     status: "pending",
     amount: 1350,
     phone: "+1 202-555-0119",
@@ -160,10 +180,12 @@ export const initialUsers: UserInterface[] = [
   },
   {
     id: 11,
+    password: "0010",
     description: "Donation",
     username: "Joel Keller",
     email: "joelkeller@gmail.com",
-    image: "https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=800",
+    image:
+      "https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=800",
     status: "failed",
     amount: 3000,
     phone: "+1 202-555-0120",
@@ -172,10 +194,12 @@ export const initialUsers: UserInterface[] = [
   },
   {
     id: 12,
+    password: "0011",
     description: "Video editing tools",
     username: "Clara Jennings",
     email: "clarajennings@gmail.com",
-    image: "https://images.pexels.com/photos/3775535/pexels-photo-3775535.jpeg?auto=compress&cs=tinysrgb&w=800",
+    image:
+      "https://images.pexels.com/photos/3775535/pexels-photo-3775535.jpeg?auto=compress&cs=tinysrgb&w=800",
     status: "success",
     amount: 980,
     phone: "+1 202-555-0121",
@@ -184,10 +208,12 @@ export const initialUsers: UserInterface[] = [
   },
   {
     id: 13,
+    password: "0012",
     description: "Cloud storage upgrade",
     username: "Trevor Miles",
     email: "trevormiles@gmail.com",
-    image: "https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=800",
+    image:
+      "https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=800",
     status: "pending",
     amount: 1250,
     phone: "+1 202-555-0122",
@@ -196,10 +222,12 @@ export const initialUsers: UserInterface[] = [
   },
   {
     id: 14,
+    password: "0013",
     description: "Webinar ticket",
     username: "Olivia Patterson",
     email: "oliviapatterson@gmail.com",
-    image: "https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=800",
+    image:
+      "https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=800",
     status: "failed",
     amount: 400,
     phone: "+1 202-555-0123",
@@ -208,10 +236,12 @@ export const initialUsers: UserInterface[] = [
   },
   {
     id: 15,
+    password: "0014",
     description: "Plugin installation",
     username: "Raymond Chen",
     email: "raymondchen@gmail.com",
-    image: "https://images.pexels.com/photos/1704488/pexels-photo-1704488.jpeg?auto=compress&cs=tinysrgb&w=800",
+    image:
+      "https://images.pexels.com/photos/1704488/pexels-photo-1704488.jpeg?auto=compress&cs=tinysrgb&w=800",
     status: "success",
     amount: 730,
     phone: "+1 202-555-0124",
@@ -220,10 +250,12 @@ export const initialUsers: UserInterface[] = [
   },
   {
     id: 16,
+    password: "0015",
     description: "Software bundle",
     username: "Natalie Ruiz",
     email: "natalieruiz@gmail.com",
-    image: "https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&w=800",
+    image:
+      "https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&w=800",
     status: "pending",
     amount: 1950,
     phone: "+1 202-555-0125",
@@ -232,10 +264,12 @@ export const initialUsers: UserInterface[] = [
   },
   {
     id: 17,
+    password: "0016",
     description: "Support contribution",
     username: "Bryce Newman",
     email: "brycenewman@gmail.com",
-    image: "https://images.pexels.com/photos/91224/pexels-photo-91224.jpeg?auto=compress&cs=tinysrgb&w=800",
+    image:
+      "https://images.pexels.com/photos/91224/pexels-photo-91224.jpeg?auto=compress&cs=tinysrgb&w=800",
     status: "success",
     amount: 300,
     phone: "+1 202-555-0126",
@@ -244,10 +278,12 @@ export const initialUsers: UserInterface[] = [
   },
   {
     id: 18,
+    password: "0017",
     description: "Business tools package",
     username: "Diana Holloway",
     email: "dianaholloway@gmail.com",
-    image: "https://images.pexels.com/photos/1130626/pexels-photo-1130626.jpeg?auto=compress&cs=tinysrgb&w=800",
+    image:
+      "https://images.pexels.com/photos/1130626/pexels-photo-1130626.jpeg?auto=compress&cs=tinysrgb&w=800",
     status: "failed",
     amount: 1470,
     phone: "+1 202-555-0127",
@@ -256,10 +292,12 @@ export const initialUsers: UserInterface[] = [
   },
   {
     id: 19,
+    password: "0018",
     description: "Hosting service",
     username: "George Turner",
     email: "georgeturner@gmail.com",
-    image: "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=800",
+    image:
+      "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=800",
     status: "pending",
     amount: 890,
     phone: "+1 202-555-0128",
@@ -268,10 +306,12 @@ export const initialUsers: UserInterface[] = [
   },
   {
     id: 20,
+    password: "0019",
     description: "Design assets",
     username: "Lena Marks",
     email: "lenamarks@gmail.com",
-    image: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=800",
+    image:
+      "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=800",
     status: "success",
     amount: 680,
     phone: "+1 202-555-0129",
@@ -280,4 +320,111 @@ export const initialUsers: UserInterface[] = [
   },
 ];
 
-
+export const initialContent: ContentInterface[] = [
+  {
+    id: 1,
+    password: "content0000",
+    title: "Top 10 AI Gadgets of 2025",
+    description:
+      "A fun and informative countdown of the latest AI-powered tech.",
+    creator: "Tech Guru",
+    image:
+      "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=800",
+    status: "published",
+    views: 2500000,
+    type: "video",
+    platform: "YouTube",
+  },
+  {
+    id: 2,
+    password: "content0001",
+    title: "How Neural Networks Learn",
+    description: "An in-depth article breaking down neural nets for beginners.",
+    creator: "DeepMind Blog",
+    image:
+      "https://images.pexels.com/photos/3861965/pexels-photo-3861965.jpeg?auto=compress&cs=tinysrgb&w=800",
+    status: "published",
+    views: 125000,
+    type: "article",
+    platform: "Medium",
+  },
+  {
+    id: 3,
+    password: "content0002",
+    title: "The Future of AR",
+    description: "A podcast discussing upcoming trends in augmented reality.",
+    creator: "TechTalk FM",
+    image:
+      "https://images.pexels.com/photos/270288/pexels-photo-270288.jpeg?auto=compress&cs=tinysrgb&w=800",
+    status: "draft",
+    views: 74000,
+    type: "podcast",
+    platform: "Spotify",
+  },
+  {
+    id: 4,
+    password: "content0003",
+    title: "Office Life in 2050",
+    description:
+      "A hilarious skit imagining a day at the office in the future.",
+    creator: "ComedyByte",
+    image:
+      "https://images.pexels.com/photos/3769021/pexels-photo-3769021.jpeg?auto=compress&cs=tinysrgb&w=800",
+    status: "published",
+    views: 980000,
+    type: "video",
+    platform: "TikTok",
+  },
+  {
+    id: 5,
+    password: "content0004",
+    title: "Crash Course: Blockchain",
+    description: "Quick lessons on how blockchain technology works.",
+    creator: "EduMedia",
+    image:
+      "https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=800",
+    status: "published",
+    views: 150000,
+    type: "video",
+    platform: "YouTube",
+  },
+  {
+    id: 6,
+    password: "content0005",
+    title: "Life in the Arctic",
+    description: "A powerful visual story of daily life in the Arctic Circle.",
+    creator: "StoryLens",
+    image:
+      "https://images.pexels.com/photos/3225517/pexels-photo-3225517.jpeg?auto=compress&cs=tinysrgb&w=800",
+    status: "archived",
+    views: 34000,
+    type: "article",
+    platform: "StoryLens",
+  },
+  {
+    id: 7,
+    password: "content0006",
+    title: "Elon Musk on Mars",
+    description: "A live Q&A with Elon Musk about Mars colonization plans.",
+    creator: "Space Journal",
+    image:
+      "https://images.pexels.com/photos/3748221/pexels-photo-3748221.jpeg?auto=compress&cs=tinysrgb&w=800",
+    status: "published",
+    views: 1580000,
+    type: "video",
+    platform: "YouTube Live",
+  },
+  {
+    id: 8,
+    password: "content0007",
+    title: "Wake Up and Win",
+    description: "Daily motivation and mindset coaching from top speakers.",
+    creator: "MindPower FM",
+    image:
+      "https://images.pexels.com/photos/1130626/pexels-photo-1130626.jpeg?auto=compress&cs=tinysrgb&w=800",
+    status: "published",
+    views: 870000,
+    type: "podcast",
+    platform: "Spotify",
+  },
+];

@@ -44,10 +44,12 @@ export default async function RootLayout({
         >
           <ContextProvider>
             <SidebarProvider defaultOpen={defaultOpen}>
-              <AppSidebar />
+              <AppSidebar/>
               <main className="w-full">
                 <AppNavbar />
-                <div className="px-4">{children}</div>
+
+                <div className="">{children}</div>
+
               </main>
             </SidebarProvider>
           </ContextProvider>
