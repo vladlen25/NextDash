@@ -1,9 +1,12 @@
-export interface DeviceInterface {
+export interface ExpenseInterface {
   id: number;
+  amount: number | undefined;
+  category: string;
   month: string;
-  desktop: number;
-  mobile: number;
+  description?: string;
 }
+
+
 
 export interface BrowserInterface {
   id: number;
@@ -35,7 +38,7 @@ export interface UserInterface {
 
 export interface ContentInterface {
   id: number;
-  password: string; // может быть токен доступа или ID, если нужно
+  password: string;
   title: string;
   description: string;
   creator: string;

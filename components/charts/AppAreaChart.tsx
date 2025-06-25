@@ -1,112 +1,69 @@
 "use client";
 
-import { Area, AreaChart, CartesianGrid, XAxis, YAxis } from "recharts";
-
+import React, { useState } from "react";
+import {
+  AreaChart,
+  Area,
+  CartesianGrid,
+  XAxis,
+  YAxis,
+  Tooltip,
+  ResponsiveContainer,
+} from "recharts";
 import {
   Card,
-  CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
+  CardDescription,
+  CardFooter,
 } from "@/components/ui/card";
-import {
-  ChartConfig,
-  ChartContainer,
-  ChartTooltip,
-  ChartTooltipContent,
-} from "@/components/ui/chart";
-import { useDeviceContext } from "@/context/DeviceContext";
-import React, { useState } from "react";
-import AppDeviceModal from "@/components/modal/AppDeviceModal";
 import { Button } from "@/components/ui/button";
+import AppExpenseModal from "@/components/modal/AppExpenseModal";
+import { useExpenseContext } from "@/context/ExpenseContext";
 
-const chartConfig = {
-  desktop: {
-    label: "Desktop",
-    color: "var(--chart-1)",
-  },
-  mobile: {
-    label: "Mobile",
-    color: "var(--chart-4)",
-  },
-} satisfies ChartConfig;
-
-export function AppAreaChat() {
-  const { devices, updateDevice } = useDeviceContext();
+export default function AppAreaChart() {
+  const { expenses, createExpense, updateExpense, deleteExpense } =
+    useExpenseContext();
   const [modalOpen, setModalOpen] = useState(false);
+
   return (
-    <Card className="h-full flex flex-col ">
+    <Card className="flex flex-col h-full">
       <CardHeader>
-        <div className="flex justify-between space-x-4 mb-4 p-2">
+        <div className="flex justify-between mb-4">
           <div>
-            <CardTitle className={"mb-2"}>Area Chart - Stacked</CardTitle>
-            <CardDescription>
-              Showing total visitors for the last 6 months
-            </CardDescription>
+            <CardTitle>Expenses</CardTitle>
+            <CardDescription>By month and category</CardDescription>
           </div>
-          <Button onClick={() => setModalOpen(true)}>Change Data</Button>
+          <Button onClick={() => setModalOpen(true)}>Add expense</Button>
         </div>
-        <AppDeviceModal
-          open={modalOpen}
-          onClose={() => setModalOpen(false)}
-          data={devices}
-          onUpdate={updateDevice}
-        />
       </CardHeader>
 
-      <ChartContainer config={chartConfig}>
-        <AreaChart
-          accessibilityLayer
-          data={devices}
-          margin={{
-            left: 12,
-            right: 12,
-          }}
-        >
-          <CartesianGrid vertical={false} />
-          <XAxis
-            dataKey="month"
-            tickLine={false}
-            axisLine={false}
-            tickMargin={8}
-            tickFormatter={(value) => value.slice(0, 3)}
-          />
-          <YAxis tickLine={false} axisLine={false} tickMargin={8} />
-          <ChartTooltip
-            cursor={false}
-            content={<ChartTooltipContent indicator="dot" />}
-          />
-
+      <ResponsiveContainer width="100%" height={300}>
+        <AreaChart data={expenses}>
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="month" tickFormatter={(val) => val.slice(0, 3)} />
+          <YAxis />
+          <Tooltip />
           <Area
-            dataKey="mobile"
-            type="natural"
-            fill="var(--color-mobile)"
-            fillOpacity={0.4}
-            stroke="var(--color-mobile)"
-            stackId="a"
-          />
-          <Area
-            dataKey="desktop"
-            type="natural"
-            fill="var(--color-desktop)"
-            fillOpacity={0.4}
-            stroke="var(--color-desktop)"
-            stackId="a"
+            type="monotone"
+            dataKey="amount"
+            stroke="#8884d8"
+            fill="#8884d8"
+            fillOpacity={0.3}
           />
         </AreaChart>
-      </ChartContainer>
+      </ResponsiveContainer>
 
-      <CardFooter>
-        <div className="flex w-full items-start gap-2 text-sm">
-          {/*<div className="grid gap-2">*/}
-          {/*    <div className="flex items-center gap-2 font-medium leading-none">*/}
-          {/*        Trending up by 5.2% this month <TrendingUp className="h-4 w-4"/>*/}
-          {/*    </div>*/}
-          {/*    <div className="flex items-center gap-2 leading-none text-muted-foreground">*/}
-          {/*        January - June 2024*/}
-          {/*    </div>*/}
-          {/*</div>*/}
-        </div>
+      <AppExpenseModal
+        open={modalOpen}
+        onClose={() => setModalOpen(false)}
+        onCreate={createExpense}
+        onUpdate={updateExpense}
+        onDelete={deleteExpense}
+      />
+
+      <CardFooter className="text-sm text-muted-foreground">
+        Expenses by Data for the last 6 months
       </CardFooter>
     </Card>
   );

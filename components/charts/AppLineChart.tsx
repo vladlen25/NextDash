@@ -1,84 +1,85 @@
 "use client";
 
-import { CartesianGrid, Line, LineChart, XAxis, YAxis } from "recharts";
-import { ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
-import {useDeviceContext} from "@/context/DeviceContext";
-import React, {useState} from "react";
-import AppDeviceModal from "@/components/modal/AppDeviceModal";
-import {Button} from "@/components/ui/button";
-import {Card} from "@/components/ui/card";
+import React, { useMemo } from "react";
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  ResponsiveContainer,
+} from "recharts";
+import {
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+  type ChartConfig,
+} from "@/components/ui/chart";
+import { useExpenseContext } from "@/context/ExpenseContext";
+import { Card } from "@/components/ui/card";
 
-
+// Конфигурация для чарта
 const chartConfig = {
-    desktop: {
-        label: "Desktop",
-        color: "var(--chart-1)",
-    },
-    mobile: {
-        label: "Mobile",
-        color: "var(--chart-2)",
-    },
+  amount: {
+    label: "Сумма",
+    color: "var(--chart-1)",
+  },
 } satisfies ChartConfig;
 
 const AppLineChart = () => {
-    const { devices, updateDevice } = useDeviceContext();
-    const [modalOpen, setModalOpen] = useState(false);
+  const { expenses } = useExpenseContext();
 
-    return (
-        <Card className="h-full flex flex-col  p-0 border-0" >
+  const monthlyData = useMemo(() => {
+    const map = new Map<string, number>();
 
-            <div className="flex justify-between space-x-4 mb-4 p-4">
-                <h1 className="text-xl font-semibold pl-4">User Activity</h1>
+    for (const expense of expenses) {
+      const month = expense.month;
+      map.set(month, (map.get(month) || 0) + expense.amount);
+    }
 
-                <AppDeviceModal
-                    open={modalOpen}
-                    onClose={() => setModalOpen(false)}
-                    data={devices}
-                    onUpdate={updateDevice}/>
-                <Button onClick={() => setModalOpen(true)}>Change Data</Button>
-            </div>
-        <ChartContainer config={chartConfig} className="mt-6">
-            <LineChart
-                accessibilityLayer
-                data={devices}
-                margin={{
-                    left: 12,
-                    right: 12,
-                }}
-            >
-                <CartesianGrid vertical={false} />
-                <XAxis
-                    dataKey="month"
-                    tickLine={false}
-                    axisLine={false}
-                    tickMargin={8}
-                    tickFormatter={(value) => value.slice(0, 3)}
-                />
-                <YAxis
-                    tickLine={false}
-                    axisLine={false}
-                    tickMargin={8}
-                />
-                <ChartTooltip cursor={false} content={<ChartTooltipContent />} />
-                <Line
-                    dataKey="desktop"
-                    type="monotone"
-                    stroke="var(--color-desktop)"
-                    strokeWidth={2}
-                    dot={false}
-                />
-                <Line
-                    dataKey="mobile"
-                    type="monotone"
-                    stroke="var(--color-mobile)"
-                    strokeWidth={2}
-                    dot={false}
-                />
+    return Array.from(map.entries()).map(([month, amount]) => ({
+      month,
+      amount,
+    }));
+  }, [expenses]);
+
+  return (
+      <Card className="h-full flex flex-col p-4">
+        <h2 className="text-lg font-semibold mb-4">Динамика расходов</h2>
+        <ChartContainer config={chartConfig} className="min-h-[250px]">
+          <ResponsiveContainer width="100%" height={300}>
+            <LineChart data={monthlyData}>
+              <CartesianGrid strokeDasharray="3 3" vertical={false} />
+              <XAxis
+                  dataKey="month"
+                  tickFormatter={(val) =>
+                      val.charAt(0).toUpperCase() + val.slice(1)
+                  }
+                  tickMargin={10}
+                  axisLine={false}
+                  tickLine={false}
+              />
+              <YAxis
+                  tickFormatter={(val) => `${val} ₽`}
+                  axisLine={false}
+                  tickLine={false}
+                  tickMargin={10}
+              />
+              <ChartTooltip
+                  content={<ChartTooltipContent indicator="line" />}
+              />
+              <Line
+                  type="monotone"
+                  dataKey="amount"
+                  stroke="var(--chart-1)"
+                  strokeWidth={2}
+                  dot={false}
+              />
             </LineChart>
+          </ResponsiveContainer>
         </ChartContainer>
-        </Card>
-
-    );
+      </Card>
+  );
 };
 
 export default AppLineChart;

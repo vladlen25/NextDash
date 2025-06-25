@@ -1,20 +1,46 @@
 import {
-  DeviceInterface,
   BrowserInterface,
   TaskInterface,
   UserInterface,
-  ContentInterface,
+  ContentInterface, ExpenseInterface,
 } from "@/types/types";
 
-export const initialDevices: DeviceInterface[] = [
-  { id: 1, month: "January", desktop: 186, mobile: 80 },
-  { id: 2, month: "February", desktop: 305, mobile: 200 },
-  { id: 3, month: "March", desktop: 237, mobile: 120 },
-  { id: 4, month: "April", desktop: 73, mobile: 190 },
-  { id: 5, month: "May", desktop: 209, mobile: 130 },
-  { id: 6, month: "June", desktop: 214, mobile: 140 },
+export const initialExpenses: ExpenseInterface[] = [
+  {
+    id: 1,
+    amount: 50,
+    category: "Food",
+    month: "January",
+    description: "Lunch at cafe",
+  },
+  {
+    id: 2,
+    category: "Transport",
+    amount: 120,
+    month: "January",
+    description: "Taxi ride",
+  },
+  {
+    id: 3,
+    category: "Food",
+    amount: 30,
+    month: "February",
+    description: "Coffee and snack",
+  },
+  {
+    id: 4,
+    category: "Health",
+    amount: 200,
+    month: "February",
+  },
+  {
+    id: 5,
+    category: "Entertainment",
+    amount: 75,
+    month: "March",
+    description: "Book purchase",
+  },
 ];
-
 export const initialBrowsers: BrowserInterface[] = [
   { id: 1, browser: "chrome", visitors: 275, fill: "var(--color-chrome)" },
   { id: 2, browser: "safari", visitors: 200, fill: "var(--color-safari)" },

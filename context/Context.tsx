@@ -1,6 +1,6 @@
 import React from "react";
 import { TaskProvider } from "./TaskContext";
-import { DeviceProvider } from "./DeviceContext";
+import { ExpenseProvider } from "./ExpenseContext";
 import { BrowserProvider } from "./BrowserContext";
 import { UserProvider } from "@/context/UserContext";
 import { AuthProvider } from "@/context/AuthContext";
@@ -10,11 +10,11 @@ export const ContextProvider: React.FC<{ children: React.ReactNode }> = ({
 }) => (
   <AuthProvider>
     <TaskProvider>
-      <DeviceProvider>
+      <ExpenseProvider>
         <BrowserProvider>
           <UserProvider>{children}</UserProvider>
         </BrowserProvider>
-      </DeviceProvider>
+      </ExpenseProvider>
     </TaskProvider>
   </AuthProvider>
 );

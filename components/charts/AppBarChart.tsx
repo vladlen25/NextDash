@@ -1,68 +1,72 @@
 "use client";
+
+import React, { useMemo, useState } from "react";
 import {
-  ChartContainer,
-  ChartLegend,
-  ChartLegendContent,
-  ChartTooltip,
-  ChartTooltipContent,
-  type ChartConfig,
+  BarChart, Bar, XAxis, YAxis, CartesianGrid, ResponsiveContainer
+} from "recharts";
+import {
+  ChartContainer, ChartLegend, ChartLegendContent, ChartTooltip, ChartTooltipContent, type ChartConfig
 } from "@/components/ui/chart";
-import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from "recharts";
-import { DesktopIcon, MobileIcon } from "@radix-ui/react-icons";
-import React, { useState } from "react";
-import AppDeviceModal from "@/components/modal/AppDeviceModal";
-import { useDeviceContext } from "@/context/DeviceContext";
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
+import { useExpenseContext } from "@/context/ExpenseContext";
+import {
+  Card, CardHeader, CardTitle, CardDescription
+} from "@/components/ui/card";
+import AppExpenseModal from "@/components/modal/AppExpenseModal";
+import { ExpenseInterface } from "@/types/types";
 
 const chartConfig = {
-  desktop: {
-    label: "Desktop",
-    color: "var(--chart-1)",
-    icon: DesktopIcon,
-  },
-  mobile: {
-    label: "Mobile",
-    color: "var(--chart-4)",
-    icon: MobileIcon,
-  },
+  amount: { label: "Amount", color: "var(--chart-1)" }
 } satisfies ChartConfig;
 
-const AppBarChart = () => {
-  const { devices, updateDevice } = useDeviceContext();
-  const [modalOpen, setModalOpen] = useState(false);
+export default function AppBarChart() {
+  const { expenses, createExpense, updateExpense, deleteExpense } = useExpenseContext();
+
+  const [selectedExpense, setSelectedExpense] = useState<ExpenseInterface | null>(null);
+
+  const monthlyData = useMemo(() => {
+    const map = new Map<string, number>();
+    for (const e of expenses) {
+      map.set(e.month, (map.get(e.month) || 0) + (e.amount ?? 0));
+    }
+    return Array.from(map, ([month, amount]) => ({ month, amount }));
+  }, [expenses]);
+
+  const handleBarClick = (data: any) => {
+    const month = data.month;
+    const found = expenses.find(e => e.month === month) || null;
+    setSelectedExpense(found);
+  };
+
   return (
-    <Card className="h-full flex flex-col">
-      <div className="flex justify-between space-x-4 mb-4 p-4">
-        <h1 className="text-lg font-medium mb-6">Bar Chart - Multiple</h1>
-        <AppDeviceModal
-          open={modalOpen}
-          onClose={() => setModalOpen(false)}
-          data={devices}
-          onUpdate={updateDevice}
+      <Card className="h-full flex flex-col p-4">
+        <CardHeader className="p-0 mb-4">
+          <CardTitle className="text-lg">Expenses by month</CardTitle>
+          <CardDescription>Total amount for each month</CardDescription>
+        </CardHeader>
+
+        <ChartContainer config={chartConfig} className="min-h-[250px]">
+          <ResponsiveContainer width="100%" height={300}>
+            <BarChart data={monthlyData} onClick={({ activePayload }) => {
+              if (activePayload?.[0]) handleBarClick(activePayload[0].payload);
+            }}>
+              <CartesianGrid strokeDasharray="3 3" vertical={false} />
+              <XAxis dataKey="month" tickFormatter={m => m.charAt(0).toUpperCase() + m.slice(1)} />
+              <YAxis tickFormatter={v => `${v} $`} />
+              <ChartTooltip content={<ChartTooltipContent />} />
+              <ChartLegend content={<ChartLegendContent />} />
+              <Bar dataKey="amount" fill="var(--chart-1)" radius={4} />
+            </BarChart>
+          </ResponsiveContainer>
+        </ChartContainer>
+
+        <AppExpenseModal
+            open={!!selectedExpense}
+            expense={selectedExpense}
+            onClose={() => setSelectedExpense(null)}
+            onCreate={createExpense}
+            onUpdate={updateExpense}
+            onDelete={deleteExpense}
         />
-        <Button onClick={() => setModalOpen(true)}>Change Data</Button>
-      </div>
-
-      <ChartContainer config={chartConfig} className="min-h-[200px] w-full ">
-        <BarChart accessibilityLayer data={devices}>
-          <CartesianGrid vertical={false} />
-          <XAxis
-            dataKey="month"
-            tickLine={false}
-            tickMargin={10}
-            axisLine={false}
-            tickFormatter={(value) => value.slice(0, 3)}
-          />
-          <YAxis tickLine={false} tickMargin={10} axisLine={false} />
-          <ChartTooltip content={<ChartTooltipContent />} />
-          <ChartLegend content={<ChartLegendContent />} />
-          <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4} />
-          <Bar dataKey="mobile" fill="var(--color-mobile)" radius={4} />
-        </BarChart>
-      </ChartContainer>
-    </Card>
+      </Card>
   );
-};
-
-export default AppBarChart;
+}

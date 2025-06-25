@@ -1,9 +1,10 @@
 import AppBarChart from "@/components/charts/AppBarChart";
-import { AppAreaChat } from "@/components/charts/AppAreaChart";
+
 import { AppPieChart } from "@/components/charts/AppPieChart";
 import AppTransactionCard from "@/components/cards/AppTransactionCard";
 import AppTaskCard from "@/components/cards/AppTaskCard";
 import AppContentCard from "@/components/cards/AppContentCard";
+import  AppAreaChart from "@/components/charts/AppAreaChart";
 
 const Homepage = () => {
   return (
@@ -19,7 +20,7 @@ const Homepage = () => {
           </div>
 
           <div className="bg-primary-foreground rounded-lg lg:col-span-2 xl:col-span-1 2xl:col-span-2 border border-gray-400">
-              <AppAreaChat />
+              <AppAreaChart />
           </div>
           <div className="bg-primary-foreground rounded-lg border border-gray-400">
               <AppTaskCard />
