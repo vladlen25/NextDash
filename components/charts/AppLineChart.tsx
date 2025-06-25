@@ -21,7 +21,7 @@ import { Card } from "@/components/ui/card";
 // Конфигурация для чарта
 const chartConfig: ChartConfig = {
   amount: {
-    label: "Сумма",
+    label: "Amount",
     color: "var(--chart-1)",
   },
 };
