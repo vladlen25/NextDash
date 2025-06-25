@@ -173,9 +173,12 @@ export default function AppExpenseModal({
     setForm((f) => ({ ...f, [name]: value }));
   };
 
-  // Сохранение / создание
   const handleSubmit = () => {
-    isEditing ? onUpdate(form) : onCreate({ ...form, id: Date.now() });
+    if (isEditing) {
+      onUpdate(form);
+    } else {
+      onCreate({ ...form, id: Date.now() });
+    }
     onClose();
   };
 
