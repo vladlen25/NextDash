@@ -14,8 +14,14 @@ import {
 import AppExpenseModal from "@/components/modal/AppExpenseModal";
 import { ExpenseInterface } from "@/types/types";
 
+
+interface MonthlyData {
+  month: string;
+  amount: number;
+}
+
 const chartConfig = {
-  amount: { label: "Amount", color: "var(--chart-1)" }
+  amount: { label: "Amount", color: "var(--chart-1)" },
 } satisfies ChartConfig;
 
 export default function AppBarChart() {
@@ -31,7 +37,7 @@ export default function AppBarChart() {
     return Array.from(map, ([month, amount]) => ({ month, amount }));
   }, [expenses]);
 
-  const handleBarClick = (data: any) => {
+  const handleBarClick = (data: MonthlyData) => {
     const month = data.month;
     const found = expenses.find(e => e.month === month) || null;
     setSelectedExpense(found);
