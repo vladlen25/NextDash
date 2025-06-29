@@ -29,7 +29,9 @@ const AppNavbar = () => {
 
   if (!user) return null;
   return (
-    <nav className="p-4 flex items-center justify-between sticky top-0 bg-background z-10">
+      <nav
+          className=" h-[80px] p-4 flex items-center justify-between bg-background z-10"
+      >
       <SidebarTrigger />
       <div className="flex items-center gap-4">
         <Link href="/">NextDash</Link>

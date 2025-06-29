@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import {
   AreaChart,
   Area,
-  CartesianGrid,
   XAxis,
   YAxis,
   Tooltip,
@@ -40,7 +39,7 @@ export default function AppAreaChart() {
 
       <ResponsiveContainer width="100%" height={300}>
         <AreaChart data={expenses}>
-          <CartesianGrid strokeDasharray="3 3" />
+
           <XAxis dataKey="month" tickFormatter={(val) => val.slice(0, 3)} />
           <YAxis />
           <Tooltip />
