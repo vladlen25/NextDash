@@ -1,5 +1,3 @@
-"use client";
-
 import {
   Sidebar,
   SidebarContent,
@@ -11,7 +9,6 @@ import SidebarUserHeader from "@/components/sidebar/SidebarUserHeader";
 import SidebarApplicationGroup from "@/components/sidebar/SidebarApplicationGroup";
 
 const AppSidebar = () => (
-  <div>
     <Sidebar collapsible="icon">
       <SidebarHeader>
         <SidebarUserHeader />
@@ -21,7 +18,6 @@ const AppSidebar = () => (
         <SidebarApplicationGroup />
       </SidebarContent>
     </Sidebar>
-  </div>
 );
 
 export default AppSidebar;
