@@ -16,7 +16,7 @@ const PopularContentCard = () => {
         <Card className="p-4 flex flex-col h-full">
             <h1 className="text-lg font-medium mb-2">Popular Content</h1>
 
-            <ScrollArea className="h-full w-full flex-1 [&>[data-radix-scroll-area-viewport]]:max-h-[calc(100vh-400px)] pr-4">
+            <ScrollArea className="h-full w-full flex-1 [&>[data-radix-scroll-area-viewport]]:max-h-[calc(100vh-300px)] pr-4">
                 <div className="flex flex-col gap-2">
                     {initialContent.map((item) => (
                         <Card

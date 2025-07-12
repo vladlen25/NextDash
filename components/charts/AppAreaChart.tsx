@@ -39,7 +39,6 @@ export default function AppAreaChart() {
 
       <ResponsiveContainer width="100%" height={300}>
         <AreaChart data={expenses}>
-
           <XAxis dataKey="month" tickFormatter={(val) => val.slice(0, 3)} />
           <YAxis />
           <Tooltip />
@@ -55,10 +54,10 @@ export default function AppAreaChart() {
 
       <AppExpenseModal
         open={modalOpen}
-        onClose={() => setModalOpen(false)}
-        onCreate={createExpense}
-        onUpdate={updateExpense}
-        onDelete={deleteExpense}
+        onCloseAction={() => setModalOpen(false)}
+        onCreateAction={createExpense}
+        onUpdateAction={updateExpense}
+        onDeleteAction={deleteExpense}
       />
 
       <CardFooter className="text-sm text-muted-foreground">

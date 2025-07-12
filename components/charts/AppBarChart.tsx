@@ -44,35 +44,41 @@ export default function AppBarChart() {
   };
 
   return (
-      <Card className="h-full flex flex-col p-4">
-        <CardHeader className="p-0 mb-4">
-          <CardTitle className="text-lg">Expenses by month</CardTitle>
-          <CardDescription>Total amount for each month</CardDescription>
-        </CardHeader>
+    <Card className="h-full flex flex-col p-4">
+      <CardHeader className="p-0 mb-4">
+        <CardTitle className="text-lg">Expenses by month</CardTitle>
+        <CardDescription>Total amount for each month</CardDescription>
+      </CardHeader>
 
-        <ChartContainer config={chartConfig} className="min-h-[250px]">
-          <ResponsiveContainer width="100%" height={300}>
-            <BarChart data={monthlyData} onClick={({ activePayload }) => {
+      <ChartContainer config={chartConfig} className="min-h-[250px]">
+        <ResponsiveContainer width="100%" height={300}>
+          <BarChart
+            data={monthlyData}
+            onClick={({ activePayload }) => {
               if (activePayload?.[0]) handleBarClick(activePayload[0].payload);
-            }}>
-              <CartesianGrid strokeDasharray="3 3" vertical={false} />
-              <XAxis dataKey="month" tickFormatter={m => m.charAt(0).toUpperCase() + m.slice(1)} />
-              <YAxis tickFormatter={v => `${v} $`} />
-              <ChartTooltip content={<ChartTooltipContent />} />
-              <ChartLegend content={<ChartLegendContent />} />
-              <Bar dataKey="amount" fill="var(--chart-1)" radius={4} />
-            </BarChart>
-          </ResponsiveContainer>
-        </ChartContainer>
+            }}
+          >
+            <CartesianGrid strokeDasharray="3 3" vertical={false} />
+            <XAxis
+              dataKey="month"
+              tickFormatter={(m) => m.charAt(0).toUpperCase() + m.slice(1)}
+            />
+            <YAxis tickFormatter={(v) => `${v} $`} />
+            <ChartTooltip content={<ChartTooltipContent />} />
+            <ChartLegend content={<ChartLegendContent />} />
+            <Bar dataKey="amount" fill="var(--chart-1)" radius={4} />
+          </BarChart>
+        </ResponsiveContainer>
+      </ChartContainer>
 
-        <AppExpenseModal
-            open={!!selectedExpense}
-            expense={selectedExpense}
-            onClose={() => setSelectedExpense(null)}
-            onCreate={createExpense}
-            onUpdate={updateExpense}
-            onDelete={deleteExpense}
-        />
-      </Card>
+      <AppExpenseModal
+        open={!!selectedExpense}
+        expense={selectedExpense}
+        onCloseAction={() => setSelectedExpense(null)}
+        onCreateAction={createExpense}
+        onUpdateAction={updateExpense}
+        onDeleteAction={deleteExpense}
+      />
+    </Card>
   );
 }

@@ -6,8 +6,6 @@ export interface ExpenseInterface {
   description?: string;
 }
 
-
-
 export interface BrowserInterface {
   id: number;
   browser: string;
@@ -29,11 +27,11 @@ export interface UserInterface {
   username: string;
   email: string;
   image: string;
-  status: 'success' | 'pending' | 'failed';
+  status: "success" | "pending" | "failed";
   amount: number;
   phone: string;
   location: string;
-  role: 'admin' | 'user';
+  role: "admin" | "user";
 }
 
 export interface ContentInterface {

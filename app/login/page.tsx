@@ -19,7 +19,6 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Eye, EyeOff } from "lucide-react";
 
-
 const loginSchema = z.object({
   email: z.string().email({ message: "Введите корректный email" }),
   password: z.string().min(1, { message: "Введите пароль" }),
@@ -42,7 +41,6 @@ export default function LoginPage() {
 
   useEffect(() => {
     if (user) router.push("/");
-
   }, [user]);
 
   const onSubmit = (data: LoginData) => {
@@ -67,7 +65,7 @@ export default function LoginPage() {
           className="w-full max-w-md space-y-6 rounded-2xl bg-background p-8 shadow-xl border border-border"
         >
           <h2 className="text-2xl font-bold text-center text-foreground">
-            Войти
+            Sign in
           </h2>
 
           <FormField
@@ -97,7 +95,7 @@ export default function LoginPage() {
             render={({ field }) => (
               <FormItem>
                 <FormLabel className="text-sm text-muted-foreground">
-                  Пароль
+                  Password
                 </FormLabel>
                 <div className="relative">
                   <FormControl>
@@ -129,7 +127,7 @@ export default function LoginPage() {
           />
 
           <Button type="submit" className="w-full text-base">
-            Войти
+            Sign in
           </Button>
         </form>
       </Form>

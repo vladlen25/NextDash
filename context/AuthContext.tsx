@@ -28,20 +28,19 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    setIsLoading(true)
+    setIsLoading(true);
     const saved = localStorage.getItem("auth_user");
     if (saved) {
       // setTimeout(() => {
-        setUser(JSON.parse(saved));
+      setUser(JSON.parse(saved));
       // }, 3500)
-
     }
     setIsLoading(false);
   }, []);
 
   const login = (email: string, password: string): boolean => {
     const found = initialUsers.find(
-        (u) => u.email === email && u.password === password
+      (u) => u.email === email && u.password === password,
     );
     if (found) {
       const u = { id: found.id, email: found.email, username: found.username };
@@ -59,9 +58,9 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   return (
-      <AuthContext.Provider value={{ user, login, logout, isLoading }}>
-        {children}
-      </AuthContext.Provider>
+    <AuthContext.Provider value={{ user, login, logout, isLoading }}>
+      {children}
+    </AuthContext.Provider>
   );
 };
 

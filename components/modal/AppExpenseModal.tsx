@@ -46,11 +46,11 @@ const CATEGORIES = [
 
 interface Props {
   open: boolean;
-  onClose: () => void;
+  onCloseAction: () => void;
   expense?: ExpenseInterface | null;
-  onCreate: (expense: ExpenseInterface) => void;
-  onUpdate: (expense: ExpenseInterface) => void;
-  onDelete: (id: number) => void;
+  onCreateAction: (expense: ExpenseInterface) => void;
+  onUpdateAction: (expense: ExpenseInterface) => void;
+  onDeleteAction: (id: number) => void;
 }
 
 // Функция инициализации формы
@@ -147,11 +147,11 @@ function ExpenseFields({
 
 export default function AppExpenseModal({
   open,
-  onClose,
+  onCloseAction,
   expense,
-  onCreate,
-  onUpdate,
-  onDelete,
+  onCreateAction,
+  onUpdateAction,
+  onDeleteAction,
 }: Props) {
   const isEditing = Boolean(expense);
   const [form, setForm] = useState<ExpenseInterface>(initForm(expense));
@@ -175,21 +175,21 @@ export default function AppExpenseModal({
 
   const handleSubmit = () => {
     if (isEditing) {
-      onUpdate(form);
+      onUpdateAction(form);
     } else {
-      onCreate({ ...form, id: Date.now() });
+      onCreateAction({ ...form, id: Date.now() });
     }
-    onClose();
+    onCloseAction();
   };
 
   // Удаление
   const handleDelete = () => {
-    if (expense) onDelete(expense.id);
-    onClose();
+    if (expense) onDeleteAction(expense.id);
+    onCloseAction();
   };
 
   return (
-    <Dialog key={expense?.id ?? "new"} open={open} onOpenChange={onClose}>
+    <Dialog key={expense?.id ?? "new"} open={open} onOpenChange={onCloseAction}>
       <DialogContent>
         <DialogHeader>
           <DialogTitle>{isEditing ? "Edit" : "Add"} Expense</DialogTitle>
@@ -208,7 +208,7 @@ export default function AppExpenseModal({
             </Button>
           )}
           <div className="ml-auto flex gap-2">
-            <Button variant="outline" onClick={onClose}>
+            <Button variant="outline" onClick={onCloseAction}>
               Cancel
             </Button>
             <Button onClick={handleSubmit}>{isEditing ? "Save" : "Add"}</Button>

@@ -2,7 +2,8 @@ import {
   BrowserInterface,
   TaskInterface,
   UserInterface,
-  ContentInterface, ExpenseInterface,
+  ContentInterface,
+  ExpenseInterface,
 } from "@/types/types";
 
 export const initialExpenses: ExpenseInterface[] = [

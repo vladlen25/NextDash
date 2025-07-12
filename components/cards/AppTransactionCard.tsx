@@ -17,12 +17,12 @@ const AppTransactionCard = () => {
     <Card className="p-4 flex flex-col h-full  ">
       <h1 className="text-lg font-medium mb-2">Latest Transaction</h1>
 
-      <ScrollArea className="h-full w-full flex-1 [&>[data-radix-scroll-area-viewport]]:max-h-[calc(100vh-400px)] pr-4">
+      <ScrollArea className="h-full w-full flex-1 [&>[data-radix-scroll-area-viewport]]:max-h-[calc(100vh-300px)] pr-4">
         <div className="flex flex-col gap-2">
           {users.map((item) => (
             <Card
               key={item.id}
-              className="flex-row items-center justify-between gap-4 p-4 cursor-pointer !border border-gray-300 hover:bg-green-100 dark:hover:bg-gray-900 "
+              className="h-full flex-row items-center justify-between gap-4 p-4 cursor-pointer !border border-gray-300 hover:bg-muted/50 dark:hover:bg-gray-900"
               onClick={() => router.push(`/users/${item.id.toString()}`)}
             >
               <div className="w-12 h-12 rounded-sm relative overflow-hidden">

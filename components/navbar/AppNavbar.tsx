@@ -14,9 +14,9 @@ import {
 import { Button } from "@/components/ui/button";
 import { useTheme } from "next-themes";
 import { SidebarTrigger } from "@/components/ui/sidebar";
-import {useRouter} from "next/navigation";
-import {useEffect} from "react";
-import {useAuth} from "@/context/AuthContext";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
+import { useAuth } from "@/context/AuthContext";
 
 const AppNavbar = () => {
   const { setTheme } = useTheme();
@@ -29,12 +29,10 @@ const AppNavbar = () => {
 
   if (!user) return null;
   return (
-      <nav
-          className=" h-[80px] p-4 flex items-center justify-between bg-background z-10"
-      >
+    <nav className=" h-[80px] p-4 flex items-center justify-between bg-background z-10">
       <SidebarTrigger />
       <div className="flex items-center gap-4">
-        <Link href="/">NextDash</Link>
+        <Link href="/">Spendy</Link>
         {/* THEME MENU */}
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -60,19 +58,19 @@ const AppNavbar = () => {
         <DropdownMenu>
           <DropdownMenuTrigger className="focus:outline-none">
             <Avatar>
-              <AvatarImage  src="https://github.com/shadcn.png" />
+              <AvatarImage src="https://github.com/shadcn.png" />
               <AvatarFallback>CN</AvatarFallback>
             </Avatar>
           </DropdownMenuTrigger>
           <DropdownMenuContent sideOffset={10}>
             <DropdownMenuLabel>My Account</DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuItem onClick={() => router.push(`/users/0`)} >
+            <DropdownMenuItem onClick={() => router.push(`/users/0`)}>
               <User className="h-[1.2rem] w-[1.2rem] mr-2" />
               Profile
             </DropdownMenuItem>
             <DropdownMenuItem onClick={logout} variant="destructive">
-              <LogOut  className="h-[1.2rem] w-[1.2rem] mr-2" />
+              <LogOut className="h-[1.2rem] w-[1.2rem] mr-2" />
               Logout
             </DropdownMenuItem>
           </DropdownMenuContent>
