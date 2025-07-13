@@ -25,6 +25,7 @@ const AppNavbar = () => {
 
   useEffect(() => {
     if (!user) router.push("/login");
+    console.log(window.innerWidth)
   }, [user]);
 
   if (!user) return null;
@@ -65,7 +66,7 @@ const AppNavbar = () => {
           <DropdownMenuContent sideOffset={10}>
             <DropdownMenuLabel>My Account</DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuItem onClick={() => router.push(`/users/0`)}>
+            <DropdownMenuItem onClick={() => router.push(`/users/1`)}>
               <User className="h-[1.2rem] w-[1.2rem] mr-2" />
               Profile
             </DropdownMenuItem>

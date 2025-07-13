@@ -41,7 +41,7 @@ const Homepage = () => {
   // }
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-4 gap-4 mb-8 p-4">
-      <div className="bg-primary-foreground rounded-lg lg:col-span-2 xl:col-span-1 2xl:col-span-2 border border-gray-400">
+      <div className=" bg-primary-foreground rounded-lg lg:col-span-2 xl:col-span-1 2xl:col-span-2 border border-gray-400">
         <AppBarChart />
       </div>
       <div className="bg-primary-foreground rounded-lg border border-gray-400">

@@ -37,7 +37,7 @@ export default function AppAreaChart() {
         </div>
       </CardHeader>
 
-      <ResponsiveContainer width="100%" height={300}>
+      <ResponsiveContainer width="100%" height='100%'>
         <AreaChart data={expenses}>
           <XAxis dataKey="month" tickFormatter={(val) => val.slice(0, 3)} />
           <YAxis />

@@ -91,7 +91,7 @@ export const initialUsers: UserInterface[] = [
     amount: 870,
     phone: "+1 202-555-0111",
     location: "Chicago, IL",
-    role: "admin",
+    role: "user",
   },
   {
     id: 3,
@@ -105,7 +105,7 @@ export const initialUsers: UserInterface[] = [
     amount: 1050,
     phone: "+1 202-555-0112",
     location: "San Francisco, CA",
-    role: "admin",
+    role: "user",
   },
   {
     id: 4,

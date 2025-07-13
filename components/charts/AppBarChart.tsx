@@ -50,8 +50,8 @@ export default function AppBarChart() {
         <CardDescription>Total amount for each month</CardDescription>
       </CardHeader>
 
-      <ChartContainer config={chartConfig} className="min-h-[250px]">
-        <ResponsiveContainer width="100%" height={300}>
+      <ChartContainer config={chartConfig} className="h-[300px] sm:h-[350px] md:h-[400px] lg:h-[450px] xl:h-[550px] chart-4k-height">
+        <ResponsiveContainer width="100%" height="100%">
           <BarChart
             data={monthlyData}
             onClick={({ activePayload }) => {
