@@ -11,15 +11,24 @@ import EditUser from "./EditUser";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import AppLineChart from "@/components/charts/AppLineChart";
 import { useParams } from "next/navigation";
-import { useUserContext } from "@/context/UserContext";
 import { Card } from "@/components/ui/card";
 import Link from "next/link";
+import {useEffect, useState} from "react";
+import {UserInterface} from "@/types/types";
 
 const SingleUserPage = () => {
   const params = useParams();
-  const { getUserById } = useUserContext();
   const id = params?.id;
-  const user = getUserById(Number(id));
+  const [user, setUser] = useState<UserInterface | null>(null);
+
+  useEffect(() => {
+    const savedAuthUser = localStorage.getItem("auth_user");
+
+    if (savedAuthUser) {
+      setUser(JSON.parse(savedAuthUser));
+    }
+  }, []);
+
 
   if (!user) {
     return <div>User not found</div>;
@@ -54,10 +63,6 @@ const SingleUserPage = () => {
           <div className="bg-primary-foreground p-4 rounded-lg ">
             <AppLineChart />
 
-            {/*<h1 className="text-xl font-semibold">User Activity</h1>*/}
-            {/*<div className="bg-primary-foreground p-4 rounded-lg">*/}
-            {/*  <AppTransactionCard title="Recent Transactions" />*/}
-            {/*</div>*/}
           </div>
         </div>
         <Card className="w-full xl:w-1/3 space-y-6 border border-gray-500 p-8 rounded-lg">
@@ -69,7 +74,7 @@ const SingleUserPage = () => {
               </Avatar>
               <h1 className="text-xl font-semibold">{user.username}</h1>
             </div>
-            {/*<p className="text-sm text-muted-foreground">{user.description}</p>*/}
+
           </div>
 
           <div className="bg-primary-foreground  rounded-lg">

@@ -64,8 +64,7 @@ const EditUser = ({ user }: EditUserProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const onSubmit = (data: z.infer<typeof formSchema>) => {
-    console.log("Form data:", data); // здесь можно передать данные в контекст
-    // Пример: updateUserContext(data)
+    console.log("Form data:", data);
     const updatedUser: UserInterface = {
       ...user,
       ...data,

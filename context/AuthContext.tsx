@@ -2,18 +2,14 @@
 
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { initialUsers } from "@/utils/data";
-
-type IUser = {
-  id: number;
-  email: string;
-  username: string;
-};
+import { UserInterface } from "@/types/types";
 
 interface AuthContextProps {
-  user: IUser | null;
+  user: UserInterface | null;
   isLoading: boolean;
   login: (email: string, password: string) => boolean;
   logout: () => void;
+  register: (newUser: UserInterface) => void;
 }
 
 const AuthContext = createContext<AuthContextProps>({
@@ -21,34 +17,53 @@ const AuthContext = createContext<AuthContextProps>({
   isLoading: true,
   login: () => false,
   logout: () => {},
+  register: () => {},
 });
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
-  const [user, setUser] = useState<IUser | null>(null);
+  const [user, setUser] = useState<UserInterface | null>(null);
+  const [users, setUsers] = useState<UserInterface[]>(initialUsers);
+
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     setIsLoading(true);
-    const saved = localStorage.getItem("auth_user");
-    if (saved) {
-      // setTimeout(() => {
-      setUser(JSON.parse(saved));
-      // }, 3500)
+
+    const savedAuthUser = localStorage.getItem("auth_user");
+    const savedUsers = localStorage.getItem("auth_users");
+
+    if (savedUsers) {
+      setUsers(JSON.parse(savedUsers));
     }
+
+    if (savedAuthUser) {
+      setUser(JSON.parse(savedAuthUser));
+    }
+
     setIsLoading(false);
   }, []);
 
+  useEffect(() => {
+    localStorage.setItem("auth_users", JSON.stringify(users));
+  }, [users]);
+
+  const register = (newUser: UserInterface) => {
+    setUsers((prev) => [...prev, newUser]);
+    setUser(newUser);
+    localStorage.setItem("auth_user", JSON.stringify(newUser));
+  };
+
   const login = (email: string, password: string): boolean => {
-    const found = initialUsers.find(
+    const found = users.find(
       (u) => u.email === email && u.password === password,
     );
-    if (found) {
-      const u = { id: found.id, email: found.email, username: found.username };
-      setUser(u);
-      localStorage.setItem("auth_user", JSON.stringify(u));
 
+    if (found) {
+      setUser(found);
+      localStorage.setItem("auth_user", JSON.stringify(found));
       return true;
     }
+
     return false;
   };
 
@@ -58,10 +73,10 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, logout, isLoading }}>
+    <AuthContext.Provider value={{ user, login, logout, register, isLoading }}>
       {children}
     </AuthContext.Provider>
   );
 };
 
-export const useAuth = () => useContext(AuthContext);
+export const useAuthContext = () => useContext(AuthContext);

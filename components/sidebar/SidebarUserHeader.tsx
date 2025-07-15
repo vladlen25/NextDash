@@ -1,29 +1,27 @@
 import Link from "next/link";
-import Image from "next/image";
 import {
   SidebarHeader,
   SidebarMenu,
   SidebarMenuItem,
   SidebarMenuButton, useSidebar,
 } from "@/components/ui/sidebar";
+import {useAuthContext} from "@/context/AuthContext";
+import {Avatar, AvatarFallback, AvatarImage} from "@/components/ui/avatar";
 
 const SidebarUserHeader = () => {
   const {state} = useSidebar();
+  const {user} = useAuthContext()
   return (
       <SidebarHeader className="py-4">
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton asChild>
               <Link href="/" className={`${state === 'collapsed' && 'justify-center'} `}>
-                <Image
-                    className="rounded-full flex-shrink-0" // добавьте flex-shrink-0
-                    src="https://github.com/shadcn.png"
-                    alt="logo"
-                    width={25}
-                    height={25}
-                    style={{minWidth: '25px', minHeight: '25px'}} // фиксированный размер
-                />
-                <span>Morty Smith</span>
+                <Avatar>
+                  <AvatarImage src={user?.image || '/default-avatar.png'}/>
+                  <AvatarFallback>CN</AvatarFallback>
+                </Avatar>
+                <span>{user?.username}</span>
               </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>

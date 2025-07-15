@@ -29,7 +29,7 @@ export interface UserInterface {
   image: string;
   status: "success" | "pending" | "failed";
   amount: number;
-  phone: string;
+  phone: string | undefined;
   location: string;
   role: "admin" | "user";
 }

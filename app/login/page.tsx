@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { useAuth } from "@/context/AuthContext";
+import { useAuthContext } from "@/context/AuthContext";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -18,10 +18,11 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Eye, EyeOff } from "lucide-react";
+import Link from "next/link";
 
 const loginSchema = z.object({
-  email: z.string().email({ message: "Введите корректный email" }),
-  password: z.string().min(1, { message: "Введите пароль" }),
+  email: z.string().email("Enter a valid email"),
+  password: z.string().min(4, "Minimum 4 characters"),
 });
 
 type LoginData = z.infer<typeof loginSchema>;
@@ -30,14 +31,14 @@ export default function LoginPage() {
   const form = useForm<LoginData>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
-      email: "MortySmith@gmail.com",
-      password: "0000",
+      email: "",
+      password: "",
     },
   });
 
   const router = useRouter();
-  const { user, login } = useAuth();
-  const [showPassword, setShowPassword] = useState(false);
+  const { user, login } = useAuthContext();
+  const [showPassword, setShowPassword] = useState(true);
 
   useEffect(() => {
     if (user) router.push("/");
@@ -52,11 +53,6 @@ export default function LoginPage() {
     }
   };
 
-  // if (isLoading) {
-  //   return (
-  //       <Spinner size="small" show={true} className="mr-2">Loading...</Spinner>
-  //   )
-  // }
   return (
     <div className="min-h-screen fixed inset-0 z-50 flex items-center justify-center bg-muted px-4 py-12">
       <Form {...form}>
@@ -129,6 +125,15 @@ export default function LoginPage() {
           <Button type="submit" className="w-full text-base">
             Sign in
           </Button>
+          <div className="text-sm text-left text-muted-foreground">
+            Don’t have an account?{" "}
+            <Link
+                href="/register"
+                className="text-primary  hover:text-primary/80"
+            >
+              Create one
+            </Link>
+          </div>
         </form>
       </Form>
     </div>
