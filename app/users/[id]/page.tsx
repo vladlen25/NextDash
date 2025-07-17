@@ -22,17 +22,19 @@ const SingleUserPage = () => {
   const [user, setUser] = useState<UserInterface | null>(null);
 
   useEffect(() => {
-    const savedAuthUser = localStorage.getItem("auth_user");
+    const stored = localStorage.getItem('auth_users');
+    if (!stored) return;
 
-    if (savedAuthUser) {
-      setUser(JSON.parse(savedAuthUser));
+    try {
+      const users: UserInterface[] = JSON.parse(stored);
+      const foundUser = users.find((u) => u.id === Number(id));
+      setUser(foundUser || null);
+    } catch (e) {
+      console.error('Error parsing users from localStorage', e);
     }
-  }, []);
+  }, [id]);
 
-
-  if (!user) {
-    return <div>User not found</div>;
-  }
+  if (!user) return <div className="p-4 text-red-500">User not found</div>;
 
   return (
     <div className="px-4 mb-8">

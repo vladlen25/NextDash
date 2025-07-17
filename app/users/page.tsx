@@ -17,7 +17,6 @@ export default function Page() {
           className="p-4 shadow-md rounded-lg border border-gray-400"
         >
           <div className="flex justify-between items-center">
-            {/* Левая часть: аватар и данные */}
             <div className="flex flex-col items-start space-y-1">
               <div className="flex items-center gap-3">
                 <Avatar className="w-10 h-10">
@@ -30,9 +29,6 @@ export default function Page() {
                 </Avatar>
                 <h3 className="text-lg font-semibold">{user.username}</h3>
               </div>
-
-              {/*<p className="text-sm text-gray-500">{user.email}</p>*/}
-              {/* <Badge variant={statusVariants[user.status] || "default"}>{user.status}</Badge> */}
             </div>
 
             <Button
