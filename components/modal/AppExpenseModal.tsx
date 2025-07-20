@@ -53,7 +53,6 @@ interface Props {
   onDeleteAction: (id: number) => void;
 }
 
-// Функция инициализации формы
 function initForm(expense?: ExpenseInterface | null): ExpenseInterface {
   return expense
     ? { ...expense }
@@ -66,7 +65,6 @@ function initForm(expense?: ExpenseInterface | null): ExpenseInterface {
       };
 }
 
-// Компонент полей ввода
 function ExpenseFields({
   form,
   onChange,
@@ -156,12 +154,10 @@ export default function AppExpenseModal({
   const isEditing = Boolean(expense);
   const [form, setForm] = useState<ExpenseInterface>(initForm(expense));
 
-  // Сброс формы при смене expense
   useEffect(() => {
     setForm(initForm(expense));
   }, [expense]);
 
-  // Обработчики полей
   const handleChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
     const { name, value } = e.target;
     setForm((f) => ({
@@ -182,7 +178,6 @@ export default function AppExpenseModal({
     onCloseAction();
   };
 
-  // Удаление
   const handleDelete = () => {
     if (expense) onDeleteAction(expense.id);
     onCloseAction();

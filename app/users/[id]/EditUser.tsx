@@ -1,5 +1,4 @@
 "use client";
-
 import {
   Sheet,
   SheetContent,
@@ -81,22 +80,22 @@ const EditUser = ({ user }: EditUserProps) => {
 
   return (
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
-        <div className="flex flex-col md:flex-row gap-4">
-            <SheetTrigger asChild>
-                <Button
-                    className="hover:bg-blue-500 hover:text-white w-full md:w-auto"
-                    onClick={() => setIsOpen(true)}
-                >
-                    Edit User
-                </Button>
-            </SheetTrigger>
-            <Button
-                className="hover:bg-red-500 hover:text-white w-full md:w-auto"
-                onClick={() => handleDeleteUser(user.id)}
-            >
-                Delete User
-            </Button>
-        </div>
+      <div className="flex flex-col md:flex-row gap-4">
+        <SheetTrigger asChild>
+          <Button
+            className="hover:bg-blue-500 hover:text-white w-full md:w-auto"
+            onClick={() => setIsOpen(true)}
+          >
+            Edit User
+          </Button>
+        </SheetTrigger>
+        <Button
+          className="hover:bg-red-500 hover:text-white w-full md:w-auto"
+          onClick={() => handleDeleteUser(user.id)}
+        >
+          Delete User
+        </Button>
+      </div>
       <SheetContent>
         <SheetHeader>
           <SheetTitle className="mb-4">Edit User</SheetTitle>

@@ -15,7 +15,7 @@ const Homepage = () => {
   const { user } = useAuthContext();
   const router = useRouter();
   useEffect(() => {
-    if (!user) router.push("/login");
+    if (!user) router.push("/welcome");
     console.log(window.innerWidth);
   }, [user]);
 

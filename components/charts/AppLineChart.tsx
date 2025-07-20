@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useMemo } from "react";
 import {
   LineChart,
@@ -18,7 +17,6 @@ import {
 import { useExpenseContext } from "@/context/ExpenseContext";
 import { Card } from "@/components/ui/card";
 
-// Конфигурация для чарта
 const chartConfig: ChartConfig = {
   amount: {
     label: "Amount",

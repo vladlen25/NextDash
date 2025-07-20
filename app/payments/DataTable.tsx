@@ -48,7 +48,7 @@ export function DataTable<TData extends { id: number }, TValue>({
 
   return (
     <div className="w-full max-w-full space-y-4">
-      {/* Desktop версия - обычная таблица */}
+      {/* Desktop version */}
       <div className="hidden md:block rounded-md border">
         <Table>
           <TableHeader>
@@ -100,7 +100,7 @@ export function DataTable<TData extends { id: number }, TValue>({
         </Table>
       </div>
 
-      {/* Mobile версия - карточки с вертикальным layout */}
+      {/* Mobile version */}
       <div className="md:hidden space-y-3 w-full max-w-full">
         {table.getRowModel().rows?.length ? (
           table.getRowModel().rows.map((row) => (
@@ -110,13 +110,11 @@ export function DataTable<TData extends { id: number }, TValue>({
               onClick={() => row.toggleSelected()}
               data-state={row.getIsSelected() && "selected"}
             >
-              {/* Поля - каждое на отдельной строке */}
               <div className="p-3 space-y-3">
                 {row.getVisibleCells().map((cell, index) => {
                   const header = cell.column.columnDef.header;
 
-                  // Определяем название поля на основе заголовка или позиции
-                  let headerText = "";
+                  let headerText: string;
                   if (typeof header === "string") {
                     headerText = header;
                   } else {

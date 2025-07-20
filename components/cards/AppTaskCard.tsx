@@ -102,10 +102,10 @@ const AppTaskCard = () => {
                   })}
                 </label>
                 <Button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      deleteTask(task.id);
-                    }}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    deleteTask(task.id);
+                  }}
                   variant="ghost"
                   className="!bg-transparent hover:bg-transparent p-1 text-red-500 hover:text-red-600 cursor-pointer hover:scale-110"
                 >

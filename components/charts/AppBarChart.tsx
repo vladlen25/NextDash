@@ -1,19 +1,31 @@
 "use client";
-
 import React, { useMemo, useState } from "react";
 import {
-  BarChart, Bar, XAxis, YAxis, CartesianGrid, ResponsiveContainer
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  ResponsiveContainer,
 } from "recharts";
 import {
-  ChartContainer, ChartLegend, ChartLegendContent, ChartTooltip, ChartTooltipContent, type ChartConfig
+  ChartContainer,
+  ChartLegend,
+  ChartLegendContent,
+  ChartTooltip,
+  ChartTooltipContent,
+  type ChartConfig,
 } from "@/components/ui/chart";
 import { useExpenseContext } from "@/context/ExpenseContext";
 import {
-  Card, CardHeader, CardTitle, CardDescription
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
 } from "@/components/ui/card";
 import AppExpenseModal from "@/components/modal/AppExpenseModal";
 import { ExpenseInterface } from "@/types/types";
-
+import { Button } from "@/components/ui/button";
 
 interface MonthlyData {
   month: string;
@@ -25,9 +37,11 @@ const chartConfig = {
 } satisfies ChartConfig;
 
 export default function AppBarChart() {
-  const { expenses, createExpense, updateExpense, deleteExpense } = useExpenseContext();
+  const { expenses, createExpense, updateExpense, deleteExpense } =
+    useExpenseContext();
 
-  const [selectedExpense, setSelectedExpense] = useState<ExpenseInterface | null>(null);
+  const [selectedExpense, setSelectedExpense] =
+    useState<ExpenseInterface | null>(null);
 
   const monthlyData = useMemo(() => {
     const map = new Map<string, number>();
@@ -39,18 +53,28 @@ export default function AppBarChart() {
 
   const handleBarClick = (data: MonthlyData) => {
     const month = data.month;
-    const found = expenses.find(e => e.month === month) || null;
+    const found = expenses.find((e) => e.month === month) || null;
     setSelectedExpense(found);
   };
+
+  const [modalOpen, setModalOpen] = useState(false);
 
   return (
     <Card className="h-full flex flex-col p-4">
       <CardHeader className="p-0 mb-4">
-        <CardTitle className="text-lg">Expenses by month</CardTitle>
-        <CardDescription>Total amount for each month</CardDescription>
+        <div className="flex justify-between mb-4 mt-2">
+          <div>
+            <CardTitle className="text-lg">Expenses by month</CardTitle>
+            <CardDescription>Total amount for each month</CardDescription>
+          </div>
+          <Button onClick={() => setModalOpen(true)}>Add expense</Button>
+        </div>
       </CardHeader>
 
-      <ChartContainer config={chartConfig} className="h-[300px] sm:h-[350px] md:h-[400px] lg:h-[450px] xl:h-[550px] chart-4k-height">
+      <ChartContainer
+        config={chartConfig}
+        className="h-[300px] sm:h-[350px] md:h-[400px] lg:h-[450px] xl:h-[550px] chart-4k-height"
+      >
         <ResponsiveContainer width="100%" height="100%">
           <BarChart
             data={monthlyData}
@@ -75,6 +99,13 @@ export default function AppBarChart() {
         open={!!selectedExpense}
         expense={selectedExpense}
         onCloseAction={() => setSelectedExpense(null)}
+        onCreateAction={createExpense}
+        onUpdateAction={updateExpense}
+        onDeleteAction={deleteExpense}
+      />
+      <AppExpenseModal
+        open={modalOpen}
+        onCloseAction={() => setModalOpen(false)}
         onCreateAction={createExpense}
         onUpdateAction={updateExpense}
         onDeleteAction={deleteExpense}

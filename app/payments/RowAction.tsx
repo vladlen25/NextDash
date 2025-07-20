@@ -44,7 +44,6 @@ export const RowAction = ({ user }: RowActionsProps) => {
         <DropdownMenuItem onClick={(e) => viewUser(user.id.toString(), e)}>
           View user
         </DropdownMenuItem>
-        {/*<DropdownMenuItem>View payment details</DropdownMenuItem>*/}
       </DropdownMenuContent>
     </DropdownMenu>
   );
