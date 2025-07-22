@@ -12,10 +12,10 @@ export default function WelcomePage() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="/register">
+                <Link href="/auth/register">
                     <Button size="lg">Get Started</Button>
                 </Link>
-                <Link href="/login">
+                <Link href="/auth/login">
                     <Button variant="outline" size="lg">Sign In</Button>
                 </Link>
             </div>

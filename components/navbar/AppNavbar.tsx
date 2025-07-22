@@ -63,7 +63,13 @@ const AppNavbar = () => {
               <User className="h-[1.2rem] w-[1.2rem] mr-2" />
               Profile
             </DropdownMenuItem>
-            <DropdownMenuItem onClick={logout} variant="destructive">
+            <DropdownMenuItem
+              onClick={() => {
+                logout();
+                router.push("/");
+              }}
+              variant="destructive"
+            >
               <LogOut className="h-[1.2rem] w-[1.2rem] mr-2" />
               Logout
             </DropdownMenuItem>

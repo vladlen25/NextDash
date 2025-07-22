@@ -19,6 +19,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Eye, EyeOff } from "lucide-react";
 import Link from "next/link";
+import {Checkbox} from "@/components/ui/checkbox";
 
 const loginSchema = z.object({
   email: z.string().email("Enter a valid email"),
@@ -39,10 +40,21 @@ export default function LoginPage() {
   const router = useRouter();
   const { user, login } = useAuthContext();
   const [showPassword, setShowPassword] = useState(true);
+  const [checked, setChecked] = useState<boolean>(false);
 
   useEffect(() => {
     if (user) router.push("/");
   }, [user]);
+
+  useEffect(() => {
+    if (checked) {
+      form.setValue("email", "MortySmith@gmail.com");
+      form.setValue("password", "0000");
+    } else {
+      form.setValue("email", "");
+      form.setValue("password", "");
+    }
+  }, [checked, form]);
 
   const onSubmit = (data: LoginData) => {
     const success = login(data.email, data.password);
@@ -60,6 +72,7 @@ export default function LoginPage() {
           onSubmit={form.handleSubmit(onSubmit)}
           className="w-full max-w-md space-y-6 rounded-2xl bg-background p-8 shadow-xl border border-border"
         >
+
           <h2 className="text-2xl font-bold text-center text-foreground">
             Sign in
           </h2>
@@ -121,14 +134,26 @@ export default function LoginPage() {
               </FormItem>
             )}
           />
-
+          <div className="flex items-center space-x-2">
+            <Checkbox
+                id="use-demo"
+                checked={checked}
+                onCheckedChange={(value) => setChecked(Boolean(value))}
+            />
+            <label
+                htmlFor="use-demo"
+                className="text-sm text-muted-foreground cursor-pointer"
+            >
+              Sign in as Morty Smith (MortySmith@gmail.com / 0000)
+            </label>
+          </div>
           <Button type="submit" className="w-full text-base">
             Sign in
           </Button>
           <div className="text-sm text-left text-muted-foreground">
             Don’t have an account?{" "}
             <Link
-                href="/register"
+                href="/auth/register"
                 className="text-primary  hover:text-primary/80"
             >
               Create one
